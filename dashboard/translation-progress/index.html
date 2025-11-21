@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Handbook Translator - Translation in Progress</title>
+  <title>Translation in Progress - Handex</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;900&display=swap"
+    rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <script>
     tailwind.config = {
@@ -14,130 +16,129 @@
       theme: {
         extend: {
           colors: {
-            "primary": "#8A2BE2",
-            "background-light": "#f7f6f8",
-            "background-dark": "#12121B",
+            "primary": "#9333EA",
+            "primary-bright": "#A855F7",
+            "primary-dark": "#7E22CE",
+            "accent-cyan": "#06B6D4",
+            "accent-pink": "#EC4899",
+            "background-dark": "#0A0118",
+            "background-darker": "#050008",
+            "surface": "#120829"
           },
           fontFamily: {
-            "display": ["Inter", "sans-serif"]
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Inter Tight", "sans-serif"]
           },
           borderRadius: {
             "DEFAULT": "0.25rem",
             "lg": "0.5rem",
             "xl": "0.75rem",
+            "2xl": "1rem",
             "full": "9999px"
           },
         },
       },
     }
   </script>
-  <link rel="stylesheet" href="/static/public/styles.css">
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-    }
-
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .mobile-menu.open {
-      max-height: 500px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../public/styles.css">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+<body
+  class="premium-bg bg-[#0A0118] font-sans text-slate-300 min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-white">
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="glow-purple w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+  </div>
+
   <div class="relative flex min-h-screen w-full flex-col">
-    <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
-      <div class="mx-auto max-w-7xl w-full flex flex-col">
-        <!-- Main nav row -->
-        <div class="flex items-center w-full">
-          <!-- Logo -->
-          <div class="flex items-center gap-4 flex-shrink-0">
-            <a href="/static/index.html">
-              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
-            </a>
-          </div>
-
-          <!-- Right side - icons + desktop links -->
-          <div class="ml-auto flex items-center gap-4 sm:gap-6">
-            <nav class="hidden sm:flex items-center gap-6">
-              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                href="/static/index.html">Dashboard</a>
-              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                href="/static/my-translations/index.html">My Translations</a>
-            </nav>
-
-            <div class="flex items-center gap-2">
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined text-xl">notifications</span>
-              </button>
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined text-xl">help</span>
-              </button>
-              <a href="/static/account/index.html"
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
-                <span class="material-symbols-outlined text-xl">account_circle</span>
-              </a>
-              <button id="mobile-menu-button"
-                class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
-                <span class="material-symbols-outlined text-3xl">menu</span>
-              </button>
-            </div>
-          </div>
+    <!-- Top Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0118]/80 backdrop-blur-xl">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <!-- Logo -->
+        <div class="flex items-center gap-4">
+          <span class="font-display font-bold text-xl text-white tracking-tight">BABEL</span>
         </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
-          <nav class="flex flex-col gap-4 pb-4">
-            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
-              href="/static/index.html">Dashboard</a>
-            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
-              href="/static/my-translations/index.html">My Translations</a>
-          </nav>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/static/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Dashboard</a>
+          <a href="/static/my-translations/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">My Translations</a>
+          <a href="/static/upload-page/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Upload New</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-4">
+          <button class="text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <a href="/static/account/index.html"
+            class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 transition-colors">
+            <span class="material-symbols-outlined text-lg">account_circle</span>
+            <span class="hidden sm:inline">Account</span>
+          </a>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-white">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
         </div>
       </div>
     </header>
-    <main class="container mx-auto flex flex-1 items-center justify-center px-8 py-10">
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+      class="fixed inset-0 z-40 bg-[#0A0118]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
+      <nav class="flex flex-col gap-4">
+        <a href="/static/index.html" class="text-lg font-medium text-white py-2 border-b border-white/10">Dashboard</a>
+        <a href="/static/my-translations/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">My Translations</a>
+        <a href="/static/upload-page/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Upload New</a>
+        <a href="/static/account/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Settings</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full p-4 sm:p-8 pt-12 sm:pt-32 relative z-10 flex flex-col items-center">
       <div class="w-full max-w-lg text-center">
-        <div class="flex flex-col items-center gap-8 rounded-xl border border-[#33333D] bg-white/5 p-8 md:p-12">
-          <div class="flex flex-col items-center gap-3">
-            <div class="flex size-16 items-center justify-center rounded-full bg-primary/20 text-primary">
-              <span class="material-symbols-outlined text-4xl">translate</span>
+        <div class="glass-panel p-8 md:p-12 flex flex-col items-center gap-8">
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="relative flex h-20 w-20 items-center justify-center rounded-full bg-primary-purple/10 border border-primary-purple/20 shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+              <div class="absolute inset-0 rounded-full bg-primary-purple/10 animate-ping"></div>
+              <span class="material-symbols-outlined text-primary-purple-bright text-4xl animate-spin-slow">sync</span>
             </div>
-            <h1 id="status-title" class="text-3xl font-bold tracking-tight text-white">Translation in Progress...</h1>
-            <p id="status-message" class="text-base text-white/70">Your handbook is being translated. This may take a
+            <h1 id="status-title" class="text-3xl font-display font-bold text-white text-glow-purple">Translation in
+              Progress...</h1>
+            <p id="status-message" class="text-base text-slate-400">Your handbook is being translated. This may take a
               few moments. Please do not close this page.</p>
           </div>
-          <div class="w-full">
-            <div class="flex justify-between text-sm font-medium text-white/70">
+
+          <div class="w-full space-y-2">
+            <div class="flex justify-between text-sm font-medium text-slate-400">
               <span>Source</span>
-              <span id="target-lang">Target</span>
+              <span id="target-lang" class="text-primary-purple-bright">Target</span>
             </div>
-            <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-[#33333D]">
-              <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-500"
+            <div class="h-2 w-full overflow-hidden rounded-full bg-white/5 border border-white/5">
+              <div id="progress-bar"
+                class="h-full rounded-full bg-gradient-to-r from-primary-purple to-accent-pink shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-500"
                 style="width: 5%;"></div>
             </div>
-            <p id="progress-text" class="mt-2 text-sm text-white">5% Complete</p>
+            <p id="progress-text" class="text-sm text-white font-medium">5% Complete</p>
           </div>
-          <div class="flex w-full flex-col gap-3">
+
+          <div class="flex w-full flex-col gap-3 mt-4">
             <button id="download-btn"
-              class="flex w-full cursor-not-allowed items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-primary text-lg font-bold text-white opacity-50"
+              class="flex w-full cursor-not-allowed items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-white/5 text-lg font-bold text-white/30 border border-white/5 transition-all"
               disabled>
               <span class="material-symbols-outlined">download</span>
               <span class="truncate">Download Handbook</span>
             </button>
             <button
-              class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-transparent text-sm font-medium text-white/70 transition-colors hover:bg-white/10"
+              class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-transparent text-sm font-medium text-slate-400 transition-colors hover:text-white hover:bg-white/5"
               onclick="window.location.href='/static/index.html'">
               <span class="truncate">Back to Dashboard</span>
             </button>
@@ -146,22 +147,22 @@
       </div>
     </main>
   </div>
+
   <script>
     function init() {
       console.log('Translation progress page initialized');
 
-      // Mobile menu toggle
+      // Mobile Menu Toggle
       const mobileMenuButton = document.getElementById('mobile-menu-button');
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function () {
-          const menu = document.getElementById('mobile-menu');
-          const button = this;
-          menu.classList.toggle('open');
-          const icon = button.querySelector('span');
-          if (menu.classList.contains('open')) {
-            icon.textContent = 'close';
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isClosed = mobileMenu.classList.contains('translate-x-full');
+          if (isClosed) {
+            mobileMenu.classList.remove('translate-x-full');
           } else {
-            icon.textContent = 'menu';
+            mobileMenu.classList.add('translate-x-full');
           }
         });
       }
@@ -231,7 +232,6 @@
           const displayProgress = Math.min(Math.max(progressValue, 5), 100);
 
           progressBar.style.width = `${displayProgress}%`;
-          progressBar.style.transition = 'width 1s cubic-bezier(0.4, 0, 0.2, 1)';
           progressText.textContent = `${displayProgress}% Complete`;
 
           // Update status message with BabelDOC stage message
@@ -278,8 +278,10 @@
             statusTitle.textContent = 'Translation Failed';
             statusMessage.textContent = job.error || 'An error occurred during translation.';
             statusMessage.classList.add('text-red-400');
-            progressBar.style.backgroundColor = '#ef4444';
-            downloadBtn.innerHTML = '<span>Try Again</span>';
+            progressBar.classList.remove('from-primary-purple', 'to-accent-pink');
+            progressBar.classList.add('bg-red-500');
+
+            downloadBtn.innerHTML = '<span class="material-symbols-outlined">refresh</span><span class="truncate">Try Again</span>';
             downloadBtn.onclick = () => {
               const isLivePreview = window.location.port === '3004';
               const uploadPath = isLivePreview
@@ -288,8 +290,8 @@
               window.location.href = uploadPath;
             };
             downloadBtn.disabled = false;
-            downloadBtn.classList.remove('cursor-not-allowed', 'opacity-50');
-            downloadBtn.classList.add('cursor-pointer');
+            downloadBtn.classList.remove('cursor-not-allowed', 'bg-white/5', 'text-white/30');
+            downloadBtn.classList.add('cursor-pointer', 'bg-primary-purple', 'text-white', 'hover:bg-primary-purple-bright', 'shadow-[0_0_20px_rgba(168,85,247,0.4)]');
           }
 
         } catch (error) {

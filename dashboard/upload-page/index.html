@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Handbook Translator</title>
+  <title>Handbook Translator - Handex</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;900&display=swap"
+    rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <script>
     tailwind.config = {
@@ -15,209 +16,268 @@
       theme: {
         extend: {
           colors: {
-            "primary": "#8A2BE2",
-            "background-light": "#f7f6f8",
-            "background-dark": "#12121B",
+            "primary": "#9333EA",
+            "primary-bright": "#A855F7",
+            "primary-dark": "#7E22CE",
+            "accent-cyan": "#06B6D4",
+            "accent-pink": "#EC4899",
+            "background-dark": "#0A0118",
+            "background-darker": "#050008",
+            "surface": "#120829"
           },
           fontFamily: {
-            "display": ["Inter", "sans-serif"]
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Inter Tight", "sans-serif"]
           },
           borderRadius: {
             "DEFAULT": "0.25rem",
             "lg": "0.5rem",
             "xl": "0.75rem",
+            "2xl": "1rem",
             "full": "9999px"
           },
         },
       },
     }
   </script>
-  <link rel="stylesheet" href="/static/public/styles.css">
-  <style>
-    /* Keep only specific styles not in global CSS if any, otherwise empty or minimal */
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .mobile-menu.open {
-      max-height: 500px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../public/styles.css">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+<body
+  class="premium-bg bg-[#0A0118] font-sans text-slate-300 min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-white">
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="glow-purple w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+    <div class="glow-purple w-[300px] h-[300px] bottom-[-50px] right-[-50px] opacity-30"></div>
+  </div>
+
   <div class="relative flex min-h-screen w-full flex-col">
-    <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
-      <div class="mx-auto max-w-7xl w-full flex flex-col">
-        <!-- Main nav row -->
-        <div class="flex items-center w-full">
-          <!-- Logo -->
-          <div class="flex items-center gap-4 flex-shrink-0">
-            <a href="/static/index.html">
-              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
-            </a>
-          </div>
-
-          <!-- Right side - icons + desktop links -->
-          <div class="ml-auto flex items-center gap-4 sm:gap-6">
-            <nav class="hidden sm:flex items-center gap-6">
-              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                href="/static/index.html">Dashboard</a>
-              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                href="/static/my-translations/index.html">My Translations</a>
-            </nav>
-
-            <div class="flex items-center gap-2">
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined text-xl">notifications</span>
-              </button>
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined text-xl">help</span>
-              </button>
-              <a href="/static/account/index.html"
-                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
-                <span class="material-symbols-outlined text-xl">account_circle</span>
-              </a>
-              <button id="mobile-menu-button"
-                class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
-                <span class="material-symbols-outlined text-3xl">menu</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div>
+    <!-- Top Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0118]/80 backdrop-blur-xl">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <!-- Logo -->
+        <div class="flex items-center gap-4">
+          <span class="font-display font-bold text-xl text-white tracking-tight">BABEL</span>
         </div>
 
-        <!-- Mobile menu (keep existing or replace with this) -->
-        <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
-          <nav class="flex flex-col gap-4 pb-4">
-            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
-              href="/static/index.html">Dashboard</a>
-            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
-              href="/static/my-translations/index.html">My Translations</a>
-          </nav>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/static/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Dashboard</a>
+          <a href="/static/my-translations/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">My Translations</a>
+          <a href="/static/upload-page/index.html" class="text-sm font-medium text-white transition-colors">Upload
+            New</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-4">
+          <button class="text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <a href="/static/account/index.html"
+            class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 transition-colors">
+            <span class="material-symbols-outlined text-lg">account_circle</span>
+            <span class="hidden sm:inline">Account</span>
+          </a>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-white">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
         </div>
       </div>
     </header>
-    <main class="container mx-auto flex flex-1 items-center justify-center px-8 py-10">
-      <div class="grid w-full max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+      class="fixed inset-0 z-40 bg-[#0A0118]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
+      <nav class="flex flex-col gap-4">
+        <a href="/static/index.html" class="text-lg font-medium text-white py-2 border-b border-white/10">Dashboard</a>
+        <a href="/static/my-translations/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">My Translations</a>
+        <a href="/static/upload-page/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Upload New</a>
+        <a href="/static/account/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Settings</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full p-4 sm:p-8 pt-12 sm:pt-20 relative z-10 flex justify-center">
+      <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <!-- Left Column: Form -->
         <div class="flex flex-col gap-8">
           <div class="flex flex-col gap-3">
-            <p class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Translate Your Handbook in
-              Seconds</p>
-            <p class="text-base font-normal leading-normal text-white/70">Seamless Handbook Translations, Instantly.
-              Supports 50+ Languages and Preserves Formatting.</p>
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-white leading-tight text-glow-purple">
+              Translate Your Handbook in Seconds
+            </h1>
+            <p class="text-lg text-slate-400 font-light">
+              Seamless Handbook Translations, Instantly. Supports 50+ Languages and Preserves Formatting.
+            </p>
           </div>
-          <div class="flex items-center gap-6">
-            <div class="flex items-center gap-3">
-              <div class="flex size-8 items-center justify-center rounded-full bg-primary text-white">
+
+          <!-- Steps -->
+          <div class="flex items-center gap-4 text-sm">
+            <div class="flex items-center gap-2 text-white">
+              <div
+                class="flex size-8 items-center justify-center rounded-full bg-primary-purple text-white shadow-[0_0_15px_rgba(168,85,247,0.5)]">
                 <span class="font-bold">1</span>
               </div>
-              <p class="text-sm font-bold text-white">Upload</p>
+              <span class="font-medium">Upload</span>
             </div>
-            <div class="h-px flex-1 bg-[#33333D]"></div>
-            <div class="flex items-center gap-3">
-              <div class="flex size-8 items-center justify-center rounded-full border-2 border-[#33333D] text-white/70">
+            <div class="h-px flex-1 bg-white/10"></div>
+            <div class="flex items-center gap-2 text-slate-500">
+              <div class="flex size-8 items-center justify-center rounded-full border border-white/10 text-slate-500">
                 <span class="font-bold">2</span>
               </div>
-              <p class="text-sm font-bold text-white/70">Select Language</p>
+              <span class="font-medium">Select Language</span>
             </div>
-            <div class="h-px flex-1 bg-[#33333D]"></div>
-            <div class="flex items-center gap-3">
-              <div class="flex size-8 items-center justify-center rounded-full border-2 border-[#33333D] text-white/70">
+            <div class="h-px flex-1 bg-white/10"></div>
+            <div class="flex items-center gap-2 text-slate-500">
+              <div class="flex size-8 items-center justify-center rounded-full border border-white/10 text-slate-500">
                 <span class="font-bold">3</span>
               </div>
-              <p class="text-sm font-bold text-white/70">Translate</p>
+              <span class="font-medium">Translate</span>
             </div>
           </div>
+
           <div class="flex flex-col gap-6">
-            <div
-              class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-[#33333D] bg-white/5 px-6 py-14 transition-colors cursor-pointer"
-              id="drop-zone">
-              <div class="flex flex-col items-center gap-2 text-center">
-                <p class="text-lg font-bold text-white" id="drop-zone-text">Drag &amp; drop your .pdf, .docx, or paste text here.</p>
-                <p class="text-sm font-normal text-white/70">Alternatively, you can <a
-                    class="font-medium text-primary underline" href="#">paste your text directly.</a></p>
+            <!-- Drop Zone -->
+            <div id="drop-zone"
+              class="glass-panel border-2 border-dashed border-white/10 hover:border-primary-purple/50 transition-all duration-300 cursor-pointer p-10 flex flex-col items-center gap-6 group">
+              <div
+                class="size-16 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary-purple/10 transition-colors">
+                <span
+                  class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary-purple-bright transition-colors">cloud_upload</span>
               </div>
-              <button
-                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#33333D] text-sm font-bold text-white transition-colors hover:bg-primary/30"
-                id="upload-file-btn">
-                <span class="truncate">Upload File</span>
+              <div class="text-center space-y-2">
+                <p id="drop-zone-text"
+                  class="text-lg font-medium text-white group-hover:text-primary-purple-bright transition-colors">
+                  Drag & drop your .pdf, .docx, or paste text here.
+                </p>
+                <p class="text-sm text-slate-400">
+                  Alternatively, you can <span class="text-primary-purple-bright underline">browse files</span>
+                </p>
+              </div>
+              <button id="upload-file-btn" class="btn-glass-secondary">
+                Select File
               </button>
             </div>
+
             <!-- Language Selection -->
-            <div class="flex flex-col">
-              <label class="pb-2 text-base font-medium text-white" for="target-language">Translate To:</label>
-              <select
-                class="form-select w-full resize-none overflow-hidden rounded-lg border border-[#33333D] bg-[#191022] p-[15px] text-base font-normal text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50"
-                id="target-language">
-                <option value="">Select Target Language</option>
-                <option value="es">Spanish (Español)</option>
-                <option value="zh">Chinese (中文)</option>
-                <option value="hi">Hindi (हिन्दी)</option>
-                <option value="ar">Arabic (العربية)</option>
-                <option value="pt">Portuguese (Português)</option>
-                <option value="en">English</option>
-                <option value="ru">Russian (Русский)</option>
-                <option value="ja">Japanese (日本語)</option>
-                <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
-                <option value="de">German (Deutsch)</option>
-                <option value="jv">Javanese (Jawa)</option>
-                <option value="ko">Korean (한국어)</option>
-                <option value="fr">French (Français)</option>
-                <option value="tr">Turkish (Türkçe)</option>
-                <option value="vi">Vietnamese (Tiếng Việt)</option>
-                <option value="it">Italian (Italiano)</option>
-                <option value="th">Thai (ไทย)</option>
-                <option value="pl">Polish (Polski)</option>
-                <option value="uk">Ukrainian (Українська)</option>
-                <option value="nl">Dutch (Nederlands)</option>
-                <option value="hy">Armenian (Հայերեն)</option>
-                <option value="ro">Romanian (Română)</option>
-              </select>
+            <div class="space-y-2">
+              <label for="target-language" class="text-sm font-medium text-slate-300">Translate To:</label>
+              <div class="relative">
+                <select id="target-language" class="glass-input w-full appearance-none cursor-pointer">
+                  <option value="">Select Target Language</option>
+                  <option value="es">Spanish (Español)</option>
+                  <option value="zh">Chinese (中文)</option>
+                  <option value="hi">Hindi (हिन्दी)</option>
+                  <option value="ar">Arabic (العربية)</option>
+                  <option value="pt">Portuguese (Português)</option>
+                  <option value="en">English</option>
+                  <option value="ru">Russian (Русский)</option>
+                  <option value="ja">Japanese (日本語)</option>
+                  <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+                  <option value="de">German (Deutsch)</option>
+                  <option value="jv">Javanese (Jawa)</option>
+                  <option value="ko">Korean (한국어)</option>
+                  <option value="fr">French (Français)</option>
+                  <option value="tr">Turkish (Türkçe)</option>
+                  <option value="vi">Vietnamese (Tiếng Việt)</option>
+                  <option value="it">Italian (Italiano)</option>
+                  <option value="th">Thai (ไทย)</option>
+                  <option value="pl">Polish (Polski)</option>
+                  <option value="uk">Ukrainian (Українська)</option>
+                  <option value="nl">Dutch (Nederlands)</option>
+                  <option value="hy">Armenian (Հայերեն)</option>
+                  <option value="ro">Romanian (Română)</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                  <span class="material-symbols-outlined">expand_more</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Action Button -->
             <button id="translate-btn"
-              class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-4 bg-primary text-lg font-bold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-50 hover:bg-primary/90"
+              class="w-full h-14 rounded-xl bg-primary-purple hover:bg-primary-purple-bright text-white font-bold text-lg shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all hover-lift flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               disabled>
-              <span class="truncate">Translate Handbook</span>
+              <span>Translate Handbook</span>
               <span class="material-symbols-outlined">arrow_forward</span>
             </button>
           </div>
         </div>
-        <div
-          class="hidden items-center justify-center rounded-xl bg-gradient-to-br from-primary/30 to-background-dark p-8 lg:flex">
-          <div class="relative w-full max-w-sm">
-            <img class="aspect-square w-full rounded-xl object-cover"
-              data-alt="Abstract 3D rendering of interconnected geometric shapes in purple and blue hues"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqA0AdLXrMU8rwyhyTkfLJB-JpFj3mgp5dq6ZjciGTzPUC3Rd8sLwaVmluNB4L3LzzIg5FQ-EWZ6CaeZdNz2NmEQqUGyX0Wjua4rz1h3Y3d4Xn4Wwe8Vo3kABNB8U3qdKO9pVizQpG7Yx4vN-c9RIndkbAnuEHlLlOPtvHFVrl-ilH_tE2kEMe6MAJoMMS57CHbjrB_-4edk44PdOxxTw4vQy1uEVhXeZoiIkFoArW8-crkZGbaBQziIqGENpeWvLP8rc0Kd0Db-na" />
+
+        <!-- Right Column: Visual -->
+        <div class="hidden lg:flex items-center justify-center">
+          <div class="relative w-full max-w-md aspect-square">
+            <!-- Abstract Visual Representation -->
             <div
-              class="absolute -bottom-8 -right-8 w-48 rounded-lg border border-[#33333D] bg-background-dark/80 p-4 backdrop-blur-sm">
-              <p class="text-sm font-bold text-white">Seamless Handbook Translations, Instantly.</p>
-              <p class="mt-1 text-xs text-white/70">Connect with your global team with perfectly formatted, accurately
-                translated handbooks.</p>
+              class="absolute inset-0 bg-gradient-to-br from-primary-purple/20 to-accent-cyan/20 rounded-2xl blur-3xl">
+            </div>
+            <div
+              class="relative h-full w-full glass-panel p-8 flex flex-col justify-between overflow-hidden border border-white/10">
+              <div class="absolute top-0 right-0 p-8 opacity-20">
+                <span class="material-symbols-outlined text-9xl text-white">language</span>
+              </div>
+
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center gap-4">
+                  <div class="size-12 rounded-lg bg-white/10 flex items-center justify-center border border-white/10">
+                    <span class="material-symbols-outlined text-2xl text-white">description</span>
+                  </div>
+                  <div>
+                    <div class="h-2 w-24 bg-white/20 rounded-full mb-2"></div>
+                    <div class="h-2 w-16 bg-white/10 rounded-full"></div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="h-2 w-full bg-white/5 rounded-full"></div>
+                  <div class="h-2 w-5/6 bg-white/5 rounded-full"></div>
+                  <div class="h-2 w-4/6 bg-white/5 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="relative z-10">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-sm text-slate-400">Translation Progress</span>
+                  <span class="text-sm text-primary-purple-bright font-mono">100%</span>
+                </div>
+                <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full w-full bg-gradient-to-r from-primary-purple to-accent-cyan"></div>
+                </div>
+              </div>
+
+              <!-- Floating Elements -->
+              <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
+                <div class="absolute top-1/4 right-1/4 size-3 bg-accent-cyan rounded-full blur-sm animate-pulse"></div>
+                <div class="absolute bottom-1/3 left-1/3 size-2 bg-primary-purple rounded-full blur-sm animate-pulse"
+                  style="animation-delay: 1s;"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
   </div>
+
   <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function () {
-      const menu = document.getElementById('mobile-menu');
-      const button = this;
-      menu.classList.toggle('open');
-      const icon = button.querySelector('span');
-      if (menu.classList.contains('open')) {
-        icon.textContent = 'close';
-      } else {
-        icon.textContent = 'menu';
-      }
-    });
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isClosed = mobileMenu.classList.contains('translate-x-full');
+        if (isClosed) {
+          mobileMenu.classList.remove('translate-x-full');
+        } else {
+          mobileMenu.classList.add('translate-x-full');
+        }
+      });
+    }
 
     // File upload functionality
     let selectedFile = null;
@@ -235,7 +295,7 @@
     const translateButton = document.getElementById('translate-btn');
     const targetLanguageSelect = document.getElementById('target-language');
     const dropZoneText = document.getElementById('drop-zone-text');
-    
+
     // Make sure all required elements exist
     if (!dropZone) {
       console.error('Drop zone not found');
@@ -248,19 +308,28 @@
     }
 
     // Upload button click
-    uploadButton.addEventListener('click', () => {
+    uploadButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent bubbling to dropZone click
       fileInput.click();
     });
+
+    // Allow clicking on the drop zone to trigger file input
+    if (dropZone) {
+      dropZone.addEventListener('click', () => {
+        fileInput.click();
+      });
+    }
 
     // File selected
     fileInput.addEventListener('change', (e) => {
       if (e.target.files.length > 0) {
         selectedFile = e.target.files[0];
         if (dropZoneText) {
-          dropZoneText.textContent = `Selected: ${selectedFile.name}`;
+          dropZoneText.innerHTML = `<span class="text-primary-purple-bright font-bold">${selectedFile.name}</span>`;
         }
         if (dropZone) {
-          dropZone.classList.add('border-primary');
+          dropZone.classList.add('border-primary-purple');
+          dropZone.classList.add('bg-primary-purple/5');
         }
         updateTranslateButton();
       }
@@ -271,19 +340,23 @@
       dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dropZone.classList.add('border-primary', 'bg-primary/10');
+        dropZone.classList.add('border-primary-purple', 'bg-primary-purple/10');
       });
 
       dropZone.addEventListener('dragleave', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dropZone.classList.remove('border-primary', 'bg-primary/10');
+        dropZone.classList.remove('border-primary-purple', 'bg-primary-purple/10');
+        // Re-add active class if file is selected
+        if (selectedFile) {
+          dropZone.classList.add('border-primary-purple', 'bg-primary-purple/5');
+        }
       });
 
       dropZone.addEventListener('drop', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dropZone.classList.remove('border-primary', 'bg-primary/10');
+        dropZone.classList.remove('border-primary-purple', 'bg-primary-purple/10');
 
         const files = e.dataTransfer.files;
         if (files.length > 0) {
@@ -293,18 +366,18 @@
           const validExtensions = ['.pdf', '.docx'];
           const fileName = file.name.toLowerCase();
           const isValid = validTypes.includes(file.type) || validExtensions.some(ext => fileName.endsWith(ext));
-          
+
           if (isValid) {
             selectedFile = file;
             // Create a new FileList-like object for the file input
             const dataTransfer = new DataTransfer();
             dataTransfer.items.add(file);
             fileInput.files = dataTransfer.files;
-            
+
             if (dropZoneText) {
-              dropZoneText.textContent = `Selected: ${selectedFile.name}`;
+              dropZoneText.innerHTML = `<span class="text-primary-purple-bright font-bold">${selectedFile.name}</span>`;
             }
-            dropZone.classList.add('border-primary');
+            dropZone.classList.add('border-primary-purple', 'bg-primary-purple/5');
             updateTranslateButton();
           } else {
             alert('Please drop a PDF or DOCX file');
@@ -325,16 +398,14 @@
     // Update translate button state
     function updateTranslateButton() {
       if (!translateButton || !targetLanguageSelect) return;
-      
+
       const hasFile = selectedFile !== null;
       const hasLanguage = targetLanguageSelect.value && targetLanguageSelect.value !== '' && targetLanguageSelect.value !== 'Select Target Language';
 
       if (hasFile && hasLanguage) {
         translateButton.disabled = false;
-        translateButton.classList.remove('opacity-50', 'cursor-not-allowed');
       } else {
         translateButton.disabled = true;
-        translateButton.classList.add('opacity-50', 'cursor-not-allowed');
       }
     }
 
@@ -349,7 +420,7 @@
 
       // Disable button and show loading state
       translateButton.disabled = true;
-      const buttonText = translateButton.querySelector('span.truncate');
+      const buttonText = translateButton.querySelector('span:first-child');
       const originalText = buttonText.textContent;
       buttonText.textContent = 'Translating...';
 
@@ -367,8 +438,8 @@
 
         // Detect API base URL - works with both Live Preview and FastAPI server
         const isLivePreview = window.location.port === '3004';
-        const apiBase = isLivePreview 
-          ? 'http://localhost:8000' 
+        const apiBase = isLivePreview
+          ? 'http://localhost:8000'
           : (window.location.protocol === 'file:' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`);
 
         // Send to backend - this now returns job_id immediately
@@ -390,7 +461,7 @@
 
         // Redirect to progress page with job_id
         // Reuse isLivePreview variable from above
-        const progressPath = isLivePreview 
+        const progressPath = isLivePreview
           ? `/dashboard/translation-progress/index.html?job=${result.job_id}`
           : `/static/translation-progress/index.html?job=${result.job_id}`;
         window.location.href = progressPath;

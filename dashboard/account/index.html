@@ -6,7 +6,9 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Account - Handbook Translator</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;900&display=swap"
+    rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <script>
     tailwind.config = {
@@ -14,103 +16,101 @@
       theme: {
         extend: {
           colors: {
-            "primary": "#8A2BE2",
-            "background-light": "#f7f6f8",
-            "background-dark": "#12121B",
+            "primary": "#9333EA",
+            "primary-bright": "#A855F7",
+            "primary-dark": "#7E22CE",
+            "accent-cyan": "#06B6D4",
+            "accent-pink": "#EC4899",
+            "background-dark": "#0A0118",
+            "background-darker": "#050008",
+            "surface": "#120829"
           },
           fontFamily: {
-            "display": ["Inter", "sans-serif"]
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Inter Tight", "sans-serif"]
           },
           borderRadius: {
             "DEFAULT": "0.25rem",
             "lg": "0.5rem",
             "xl": "0.75rem",
+            "2xl": "1rem",
             "full": "9999px"
           },
         },
       },
     }
   </script>
-  <link rel="stylesheet" href="/static/public/styles.css">
-  <style>
-    /* Keep only specific styles not in global CSS if any, otherwise empty or minimal */
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .mobile-menu.open {
-      max-height: 500px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../public/styles.css">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+<body
+  class="premium-bg bg-[#0A0118] font-sans text-slate-300 min-h-screen overflow-x-hidden selection:bg-primary/30 selection:text-white">
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="glow-purple w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+  </div>
+
   <div class="relative flex min-h-screen w-full flex-col">
-    <header class="glass-panel sticky top-0 z-50 mx-auto max-w-7xl mt-6 px-6 py-4 rounded-2xl"
-      style="backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
-      <div class="w-full flex flex-col">
-        <!-- Main nav row -->
-        <div class="flex items-center w-full">
-          <!-- Logo -->
-          <div class="flex items-center gap-4 flex-shrink-0 flex-1">
-            <a href="/static/index.html">
-              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
-            </a>
-          </div>
-
-          <!-- Right side - icons + desktop links -->
-          <div class="flex items-center gap-8">
-            <nav class="hidden sm:flex items-center gap-8">
-              <a class="text-sm font-semibold text-white/70 hover:text-white transition-all hover:scale-105"
-                href="/static/index.html">Dashboard</a>
-              <a class="text-sm font-semibold text-white/70 hover:text-white transition-all hover:scale-105"
-                href="/static/my-translations/index.html">My Translations</a>
-            </nav>
-
-            <div class="flex items-center gap-3 ml-4">
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg glass-panel text-white/70 hover:text-white hover:border-purple-500 transition-all">
-                <span class="material-symbols-outlined text-xl">notifications</span>
-              </button>
-              <button
-                class="flex h-10 w-10 items-center justify-center rounded-lg glass-panel text-white/70 hover:text-white hover:border-purple-500 transition-all">
-                <span class="material-symbols-outlined text-xl">help</span>
-              </button>
-              <a href="index.html" class="flex h-10 w-10 items-center justify-center rounded-lg"
-                style="background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-dark)); box-shadow: var(--shadow-glow);">
-                <span class="material-symbols-outlined text-xl text-white">account_circle</span>
-              </a>
-              <button id="mobile-menu-button"
-                class="sm:hidden flex h-10 w-10 items-center justify-center rounded-lg glass-panel text-white hover:border-purple-500 transition-all">
-                <span class="material-symbols-outlined text-2xl">menu</span>
-              </button>
-            </div>
-          </div>
+    <!-- Top Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0118]/80 backdrop-blur-xl">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <!-- Logo -->
+        <div class="flex items-center gap-4">
+          <span class="font-display font-bold text-xl text-white tracking-tight">BABEL</span>
         </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="mobile-menu sm:hidden mt-6 w-full">
-          <nav class="flex flex-col gap-3">
-            <a class="text-sm font-semibold text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5 transition-all"
-              href="/static/index.html">Dashboard</a>
-            <a class="text-sm font-semibold text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5 transition-all"
-              href="/static/my-translations/index.html">My Translations</a>
-          </nav>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/static/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Dashboard</a>
+          <a href="/static/my-translations/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">My Translations</a>
+          <a href="/static/upload-page/index.html"
+            class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Upload New</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-4">
+          <button class="text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <a href="/static/account/index.html"
+            class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 transition-colors">
+            <span class="material-symbols-outlined text-lg">account_circle</span>
+            <span class="hidden sm:inline">Account</span>
+          </a>
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-white">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
         </div>
       </div>
     </header>
 
-    <main class="flex-1">
-      <div class="container mx-auto px-8 py-8 max-w-4xl">
-        <h1 class="text-3xl font-black text-white mb-8">Account Settings</h1>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+      class="fixed inset-0 z-40 bg-[#0A0118]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
+      <nav class="flex flex-col gap-4">
+        <a href="/static/index.html" class="text-lg font-medium text-white py-2 border-b border-white/10">Dashboard</a>
+        <a href="/static/my-translations/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">My Translations</a>
+        <a href="/static/upload-page/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Upload New</a>
+        <a href="/static/account/index.html"
+          class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Settings</a>
+      </nav>
+    </div>
+
+    <main class="flex-1 w-full p-4 sm:p-8 pt-12 sm:pt-32 relative z-10">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <h1 class="text-3xl font-display font-bold text-white mb-8 text-glow-purple">Account Settings</h1>
 
         <!-- Profile Section -->
-        <div class="feature-card card-shadow rounded-xl p-8 mb-6">
+        <div class="glass-panel p-8">
           <h2 class="text-xl font-bold text-white mb-6">Profile Information</h2>
           <div class="flex items-center gap-6 mb-6">
-            <div class="flex size-20 items-center justify-center rounded-full bg-primary/20 text-primary text-4xl">
+            <div
+              class="flex size-20 items-center justify-center rounded-full bg-primary-purple/20 text-primary-purple text-4xl">
               <span class="material-symbols-outlined">account_circle</span>
             </div>
             <div class="flex-1">
@@ -119,7 +119,7 @@
               <p class="text-xs text-white/60 mt-1">Member since January 2024</p>
             </div>
             <button
-              class="button-shadow flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-sm font-medium text-white transition-all hover:bg-primary/90">
+              class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-purple text-sm font-medium text-white transition-all hover:bg-primary-purple-bright hover-lift">
               <span class="material-symbols-outlined text-base">edit</span>
               Edit Profile
             </button>
@@ -128,60 +128,54 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium text-white mb-2">First Name</label>
-              <input type="text" value="John"
-                class="w-full rounded-lg border border-[#33333D] bg-[#191022] px-4 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+              <input type="text" value="John" class="glass-input w-full" />
             </div>
             <div>
               <label class="block text-sm font-medium text-white mb-2">Last Name</label>
-              <input type="text" value="Doe"
-                class="w-full rounded-lg border border-[#33333D] bg-[#191022] px-4 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+              <input type="text" value="Doe" class="glass-input w-full" />
             </div>
             <div class="md:col-span-2">
               <label class="block text-sm font-medium text-white mb-2">Email</label>
-              <input type="email" value="john.doe@example.com"
-                class="w-full rounded-lg border border-[#33333D] bg-[#191022] px-4 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+              <input type="email" value="john.doe@example.com" class="glass-input w-full" />
             </div>
             <div class="md:col-span-2">
               <label class="block text-sm font-medium text-white mb-2">Company</label>
-              <input type="text" value="Acme Corporation"
-                class="w-full rounded-lg border border-[#33333D] bg-[#191022] px-4 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+              <input type="text" value="Acme Corporation" class="glass-input w-full" />
             </div>
           </div>
         </div>
 
         <!-- Security Section -->
-        <div class="feature-card card-shadow rounded-xl p-8 mb-6">
+        <div class="glass-panel p-8">
           <h2 class="text-xl font-bold text-white mb-6">Security</h2>
           <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 rounded-lg bg-[#191022] border border-[#33333D]">
+            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-white/10">
               <div>
                 <h3 class="text-base font-medium text-white mb-1">Password</h3>
                 <p class="text-sm text-white/70">Last changed 30 days ago</p>
               </div>
-              <a href="change-password/index.html"
-                class="px-4 py-2 rounded-lg bg-[#33333D] text-sm font-medium text-white hover:bg-white/10 transition-colors inline-block">
+              <a href="change-password/index.html" class="btn-glass-secondary">
                 Change Password
               </a>
             </div>
 
-            <div class="flex items-center justify-between p-4 rounded-lg bg-[#191022] border border-[#33333D]">
+            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-white/10">
               <div>
                 <h3 class="text-base font-medium text-white mb-1">Two-Factor Authentication</h3>
                 <p class="text-sm text-white/70">Add an extra layer of security</p>
               </div>
               <a href="enable-2fa/index.html"
-                class="px-4 py-2 rounded-lg bg-primary text-sm font-medium text-white hover:bg-primary/90 transition-colors inline-block">
+                class="px-4 py-2 rounded-lg bg-primary-purple text-sm font-medium text-white hover:bg-primary-purple-bright transition-colors inline-block hover-lift">
                 Enable 2FA
               </a>
             </div>
 
-            <div class="flex items-center justify-between p-4 rounded-lg bg-[#191022] border border-[#33333D]">
+            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-white/10">
               <div>
                 <h3 class="text-base font-medium text-white mb-1">Active Sessions</h3>
                 <p class="text-sm text-white/70">3 devices currently signed in</p>
               </div>
-              <a href="active-sessions/index.html"
-                class="px-4 py-2 rounded-lg bg-[#33333D] text-sm font-medium text-white hover:bg-white/10 transition-colors inline-block">
+              <a href="active-sessions/index.html" class="btn-glass-secondary">
                 View All
               </a>
             </div>
@@ -189,7 +183,7 @@
         </div>
 
         <!-- Preferences Section -->
-        <div class="feature-card card-shadow rounded-xl p-8 mb-6">
+        <div class="glass-panel p-8">
           <h2 class="text-xl font-bold text-white mb-6">Preferences</h2>
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -200,7 +194,7 @@
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" checked class="sr-only peer" />
                 <div
-                  class="w-11 h-6 bg-[#33333D] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                  class="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-purple">
                 </div>
               </label>
             </div>
@@ -210,19 +204,18 @@
                 <h3 class="text-base font-medium text-white mb-1">Default Language</h3>
                 <p class="text-sm text-white/70">Set your preferred target language</p>
               </div>
-              <select
-                class="px-4 py-2 rounded-lg border border-[#33333D] bg-[#191022] text-sm text-white focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50">
-                <option>Spanish</option>
-                <option>French</option>
-                <option>German</option>
-                <option>Italian</option>
+              <select class="glass-select">
+                <option class="bg-gray-900">Spanish</option>
+                <option class="bg-gray-900">French</option>
+                <option class="bg-gray-900">German</option>
+                <option class="bg-gray-900">Italian</option>
               </select>
             </div>
           </div>
         </div>
 
         <!-- Danger Zone -->
-        <div class="feature-card card-shadow rounded-xl p-8 border-2 border-red-500/20">
+        <div class="glass-panel p-8 border border-red-500/30 shadow-[0_0_20px_rgba(239,68,68,0.1)]">
           <h2 class="text-xl font-bold text-red-400 mb-6">Danger Zone</h2>
           <div class="space-y-4">
             <div class="flex items-center justify-between p-4 rounded-lg bg-red-500/10 border border-red-500/20">
@@ -231,7 +224,7 @@
                 <p class="text-sm text-white/70">Permanently delete your account and all data</p>
               </div>
               <a href="delete-account/index.html"
-                class="px-4 py-2 rounded-lg bg-red-500 text-sm font-medium text-white hover:bg-red-600 transition-colors inline-block">
+                class="px-4 py-2 rounded-lg bg-red-500 text-sm font-medium text-white hover:bg-red-600 transition-colors inline-block hover-lift">
                 Delete Account
               </a>
             </div>
@@ -239,12 +232,11 @@
         </div>
 
         <div class="flex justify-end gap-4 mt-8">
-          <button
-            class="px-6 py-2 rounded-lg border border-[#33333D] text-sm font-medium text-white hover:bg-white/5 transition-colors">
+          <button class="btn-glass-secondary">
             Cancel
           </button>
           <button
-            class="button-shadow px-6 py-2 rounded-lg bg-primary text-sm font-medium text-white transition-all hover:bg-primary/90">
+            class="px-6 py-2 rounded-lg bg-primary-purple text-sm font-medium text-white transition-all hover:bg-primary-purple-bright hover-lift shadow-[0_0_20px_rgba(168,85,247,0.4)]">
             Save Changes
           </button>
         </div>
@@ -253,17 +245,20 @@
   </div>
 
   <script>
-    document.getElementById('mobile-menu-button').addEventListener('click', function () {
-      const menu = document.getElementById('mobile-menu');
-      const button = this;
-      menu.classList.toggle('open');
-      const icon = button.querySelector('span');
-      if (menu.classList.contains('open')) {
-        icon.textContent = 'close';
-      } else {
-        icon.textContent = 'menu';
-      }
-    });
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isClosed = mobileMenu.classList.contains('translate-x-full');
+        if (isClosed) {
+          mobileMenu.classList.remove('translate-x-full');
+        } else {
+          mobileMenu.classList.add('translate-x-full');
+        }
+      });
+    }
   </script>
 </body>
 

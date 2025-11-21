@@ -6,7 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PDF Viewer - Handex</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;900&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script>
         tailwind.config = {
@@ -14,27 +16,32 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#8A2BE2",
-                        "background-light": "#f7f6f8",
-                        "background-dark": "#12121B",
+                        "primary": "#9333EA",
+                        "primary-bright": "#A855F7",
+                        "primary-dark": "#7E22CE",
+                        "accent-cyan": "#06B6D4",
+                        "accent-pink": "#EC4899",
+                        "background-dark": "#0A0118",
+                        "background-darker": "#050008",
+                        "surface": "#120829"
                     },
                     fontFamily: {
-                        "display": ["Inter", "sans-serif"]
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Inter Tight", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
                     },
                 },
-      },
-    }
-  </script>
-  <link rel="stylesheet" href="/static/public/styles.css">
-  <style>
-        .material-symbols-outlined {
-            font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
+            },
         }
-
+    </script>
+    <link rel="stylesheet" href="../../public/styles.css">
+    <style>
         #pdf-viewer {
             width: 100%;
             height: calc(100vh - 80px);
@@ -43,27 +50,26 @@
     </style>
 </head>
 
-<body class="bg-background-dark font-display text-white">
+<body
+    class="premium-bg bg-[#0A0118] font-sans text-slate-300 min-h-screen overflow-hidden selection:bg-primary/30 selection:text-white">
     <div class="relative flex min-h-screen w-full flex-col">
         <!-- Header -->
-        <header class="w-full px-4 sm:px-6 lg:px-8 py-4 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
+        <header class="w-full px-4 sm:px-6 lg:px-8 py-4 border-b border-white/5 bg-[#0A0118]/80 backdrop-blur-xl z-50">
             <div class="mx-auto max-w-7xl w-full flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <a href="/static/index.html">
-                        <img src="/static/public/handex-logo.png" alt="HANDEX" class="h-8 w-auto" />
-                    </a>
-                    <div class="hidden sm:block h-6 w-px bg-white/20"></div>
-                    <h1 id="viewer-title" class="hidden sm:block text-sm font-medium text-white/70">PDF Viewer</h1>
+                    <span class="font-display font-bold text-xl text-white tracking-tight">BABEL</span>
+                    <div class="hidden sm:block h-6 w-px bg-white/10"></div>
+                    <h1 id="viewer-title" class="hidden sm:block text-sm font-medium text-slate-400">PDF Viewer</h1>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-3">
                     <button id="download-btn"
-                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-medium transition-colors">
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-purple hover:bg-primary-purple-bright text-white text-sm font-bold transition-all hover-lift shadow-[0_0_15px_rgba(168,85,247,0.3)]">
                         <span class="material-symbols-outlined text-lg">download</span>
                         <span class="hidden sm:inline">Download</span>
                     </button>
                     <button onclick="window.close()"
-                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors">
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-sm font-medium transition-colors">
                         <span class="material-symbols-outlined text-lg">close</span>
                         <span class="hidden sm:inline">Close</span>
                     </button>
@@ -72,8 +78,14 @@
         </header>
 
         <!-- PDF Viewer -->
-        <main class="flex-1 bg-gray-900">
-            <iframe id="pdf-viewer" title="PDF Viewer"></iframe>
+        <main class="flex-1 bg-[#050008] relative">
+            <div class="absolute inset-0 flex items-center justify-center text-slate-500 z-0">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl animate-spin">sync</span>
+                    <p>Loading Document...</p>
+                </div>
+            </div>
+            <iframe id="pdf-viewer" title="PDF Viewer" class="relative z-10 w-full h-full"></iframe>
         </main>
     </div>
 
@@ -90,13 +102,19 @@
             document.getElementById('viewer-title').textContent = filename;
             document.title = `${filename} - PDF Viewer`;
 
+            // Detect API base URL - works with both Live Preview and FastAPI server
+            const isLivePreview = window.location.port === '3004';
+            const apiBase = isLivePreview
+                ? 'http://localhost:8000'
+                : (window.location.protocol === 'file:' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`);
+
             // Load PDF in iframe
-            const pdfUrl = `http://localhost:8000/api/view/${filename}`;
+            const pdfUrl = `${apiBase}/api/view/${filename}`;
             document.getElementById('pdf-viewer').src = pdfUrl;
 
             // Set up download button
             document.getElementById('download-btn').onclick = () => {
-                window.location.href = `http://localhost:8000/api/download/${filename}`;
+                window.location.href = `${apiBase}/api/download/${filename}`;
             };
         }
     </script>
