@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Handbook Translator - Translate Your Handbooks Instantly</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8A2BE2",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#12121B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        /* Enhanced shadows and depth */
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(138, 43, 226, 0.1),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .card-shadow-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-shadow-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(138, 43, 226, 0.3),
+                0 10px 10px -5px rgba(138, 43, 226, 0.2),
+                0 0 0 1px rgba(138, 43, 226, 0.2),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .button-shadow {
+            box-shadow: 0 4px 14px 0 rgba(138, 43, 226, 0.4),
+                0 2px 4px 0 rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .button-shadow:hover {
+            box-shadow: 0 8px 20px 0 rgba(138, 43, 226, 0.5),
+                0 4px 8px 0 rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .button-shadow:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px 0 rgba(138, 43, 226, 0.3);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05));
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(138, 43, 226, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(18, 18, 27, 0.8) 50%, rgba(138, 43, 226, 0.1) 100%);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(138, 43, 226, 0.1) 50%, rgba(18, 18, 27, 0.9) 100%);
+            box-shadow: 0 20px 40px -10px rgba(138, 43, 226, 0.4),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(18, 18, 27, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon-glow {
+            filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.5));
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.5),
+                0 0 40px rgba(138, 43, 226, 0.3);
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navigation -->
+        <header class="nav-glass container mx-auto px-8 py-6">
+            <div class="flex items-center w-full">
+                <div class="flex items-center gap-4 flex-shrink-0">
+                    <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                            class="h-8" /></a>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8 ml-auto">
+                    <nav class="hidden items-center gap-8 md:flex">
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="about.html">About</a>
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="pricing.html">Pricing</a>
+                        <a class="button-shadow flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-all hover:bg-primary/90"
+                            href="signup.html">Sign Up</a>
+                    </nav>
+                    <button id="mobile-menu-button"
+                        class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                <nav class="flex flex-col gap-4 pb-4">
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="about.html">About</a>
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="pricing.html">Pricing</a>
+                    <a class="button-shadow flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-all hover:bg-primary/90"
+                        href="signup.html">Sign Up</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="flex-1">
+            <section class="container mx-auto px-8 py-20">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+                        <div class="flex flex-col gap-8">
+                            <div class="flex flex-col gap-4">
+                                <h1
+                                    class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em] text-white">
+                                    Translate Your Handbooks in Seconds</h1>
+                                <p class="text-xl font-normal leading-relaxed text-white/70">Seamless handbook
+                                    translations for global teams. Supports 50+ languages and preserves formatting
+                                    perfectly.</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a class="button-shadow flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-8 bg-primary text-lg font-bold text-white transition-all hover:bg-primary/90"
+                                    href="signup.html">Get Started Free</a>
+                                <a class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-8 bg-transparent border-2 border-white/20 text-lg font-bold text-white transition-all hover:border-white/40 hover:bg-white/5 hover:shadow-lg hover:shadow-primary/20"
+                                    href="about.html">Learn More</a>
+                            </div>
+                            <div class="flex items-center gap-8 pt-4">
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white">50+</p>
+                                    <p class="text-sm text-white/70">Languages</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white">99.9%</p>
+                                    <p class="text-sm text-white/70">Uptime</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white">24/7</p>
+                                    <p class="text-sm text-white/70">Support</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="hidden lg:flex items-center justify-center rounded-xl hero-gradient p-8 card-shadow">
+                            <div class="relative w-full max-w-md">
+                                <img class="aspect-square w-full rounded-xl object-cover"
+                                    data-alt="Abstract 3D rendering of interconnected geometric shapes in purple and blue hues"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqA0AdLXrMU8rwyhyTkfLJB-JpFj3mgp5dq6ZjciGTzPUC3Rd8sLwaVmluNB4L3LzzIg5FQ-EWZ6CaeZdNz2NmEQqUGyX0Wjua4rz1h3Y3d4Xn4Wwe8Vo3kABNB8U3qdKO9pVizQpG7Yx4vN-c9RIndkbAnuEHlLlOPtvHFVrl-ilH_tE2kEMe6MAJoMMS57CHbjrB_-4edk44PdOxxTw4vQy1uEVhXeZoiIkFoArW8-crkZGbaBQziIqGENpeWvLP8rc0Kd0Db-na" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="border-t border-[#33333D] py-20">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-6xl">
+                        <div class="flex flex-col items-center gap-4 mb-16 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Why Choose
+                                Handbook Translator?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">Everything you need to translate handbooks
+                                quickly and accurately.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">speed</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Lightning Fast</h3>
+                                <p class="text-base text-white/70">Translate entire handbooks in seconds, not hours. Get
+                                    your translated documents instantly.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">verified</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Accurate Translations</h3>
+                                <p class="text-base text-white/70">AI-powered translations with human-level accuracy.
+                                    Preserve context and meaning perfectly.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">format_paint</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Format Preserved</h3>
+                                <p class="text-base text-white/70">Maintains original formatting, layouts, and styling.
+                                    Your documents look perfect in any language.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">security</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Secure & Private</h3>
+                                <p class="text-base text-white/70">Enterprise-grade security. Your documents are
+                                    encrypted and never shared with third parties.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">language</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">50+ Languages</h3>
+                                <p class="text-base text-white/70">Support for all major languages worldwide. Translate
+                                    to and from any language combination.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl feature-card card-shadow card-shadow-hover p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary icon-glow">
+                                    <span class="material-symbols-outlined text-3xl">support_agent</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">24/7 Support</h3>
+                                <p class="text-base text-white/70">Round-the-clock customer support. We're here to help
+                                    whenever you need us.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="signup" class="border-t border-[#33333D] py-20">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div class="flex flex-col items-center gap-8 rounded-2xl cta-gradient p-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Ready to Get
+                                Started?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">Join thousands of companies translating their
+                                handbooks with Handbook Translator. Start your free trial today.</p>
+                            <a class="button-shadow flex w-full max-w-xs mx-auto cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-8 bg-primary text-lg font-bold text-white transition-all hover:bg-primary/90"
+                                href="signup.html">Sign Up Free</a>
+                            <p class="text-sm text-white/60">No credit card required. 14-day free trial.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[#33333D] py-12">
+            <div class="container mx-auto px-8">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-4">
+                                <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                        class="h-6" /></a>
+                            </div>
+                            <p class="text-sm text-white/70">Translate your handbooks instantly with AI-powered
+                                accuracy.</p>
+                            <p class="text-xs text-white/60">A LUNARTECH Company</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Product</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="about.html">About</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="pricing.html">Pricing</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="signup.html">Sign
+                                Up</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Resources</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="#">Documentation</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">API</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Support</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Company</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="blog.html">Blog</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="careers.html">Careers</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#33333D] pt-8 text-center">
+                        <p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A
+                            LUNARTECH Company.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            const button = this;
+            menu.classList.toggle('open');
+            const icon = button.querySelector('span');
+            if (menu.classList.contains('open')) {
+                icon.textContent = 'close';
+            } else {
+                icon.textContent = 'menu';
+            }
+        });
+    </script>
+</body>
+
+</html>

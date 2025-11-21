@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Handbook Translator</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#8A2BE2",
+            "background-light": "#f7f6f8",
+            "background-dark": "#12121B",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/static/public/styles.css">
+  <style>
+    /* Keep only specific styles not in global CSS if any, otherwise empty or minimal */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+  <div class="relative flex min-h-screen w-full flex-col">
+    <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl w-full flex flex-col">
+        <!-- Main nav row -->
+        <div class="flex items-center w-full">
+          <!-- Logo -->
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <a href="/static/index.html">
+              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
+            </a>
+          </div>
+
+          <!-- Right side - icons + desktop links -->
+          <div class="ml-auto flex items-center gap-4 sm:gap-6">
+            <nav class="hidden sm:flex items-center gap-6">
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/index.html">Dashboard</a>
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/my-translations/index.html">My Translations</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">notifications</span>
+              </button>
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">help</span>
+              </button>
+              <a href="/static/account/index.html"
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                <span class="material-symbols-outlined text-xl">account_circle</span>
+              </a>
+              <button id="mobile-menu-button"
+                class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+
+        <!-- Mobile menu (keep existing or replace with this) -->
+        <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
+          <nav class="flex flex-col gap-4 pb-4">
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/index.html">Dashboard</a>
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/my-translations/index.html">My Translations</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto flex flex-1 items-center justify-center px-8 py-10">
+      <div class="grid w-full max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-col gap-3">
+            <p class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Translate Your Handbook in
+              Seconds</p>
+            <p class="text-base font-normal leading-normal text-white/70">Seamless Handbook Translations, Instantly.
+              Supports 50+ Languages and Preserves Formatting.</p>
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3">
+              <div class="flex size-8 items-center justify-center rounded-full bg-primary text-white">
+                <span class="font-bold">1</span>
+              </div>
+              <p class="text-sm font-bold text-white">Upload</p>
+            </div>
+            <div class="h-px flex-1 bg-[#33333D]"></div>
+            <div class="flex items-center gap-3">
+              <div class="flex size-8 items-center justify-center rounded-full border-2 border-[#33333D] text-white/70">
+                <span class="font-bold">2</span>
+              </div>
+              <p class="text-sm font-bold text-white/70">Select Language</p>
+            </div>
+            <div class="h-px flex-1 bg-[#33333D]"></div>
+            <div class="flex items-center gap-3">
+              <div class="flex size-8 items-center justify-center rounded-full border-2 border-[#33333D] text-white/70">
+                <span class="font-bold">3</span>
+              </div>
+              <p class="text-sm font-bold text-white/70">Translate</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-6">
+            <div
+              class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-[#33333D] bg-white/5 px-6 py-14 transition-colors cursor-pointer"
+              id="drop-zone">
+              <div class="flex flex-col items-center gap-2 text-center">
+                <p class="text-lg font-bold text-white" id="drop-zone-text">Drag &amp; drop your .pdf, .docx, or paste text here.</p>
+                <p class="text-sm font-normal text-white/70">Alternatively, you can <a
+                    class="font-medium text-primary underline" href="#">paste your text directly.</a></p>
+              </div>
+              <button
+                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#33333D] text-sm font-bold text-white transition-colors hover:bg-primary/30"
+                id="upload-file-btn">
+                <span class="truncate">Upload File</span>
+              </button>
+            </div>
+            <!-- Language Selection -->
+            <div class="flex flex-col">
+              <label class="pb-2 text-base font-medium text-white" for="target-language">Translate To:</label>
+              <select
+                class="form-select w-full resize-none overflow-hidden rounded-lg border border-[#33333D] bg-[#191022] p-[15px] text-base font-normal text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50"
+                id="target-language">
+                <option value="">Select Target Language</option>
+                <option value="es">Spanish (Español)</option>
+                <option value="zh">Chinese (中文)</option>
+                <option value="hi">Hindi (हिन्दी)</option>
+                <option value="ar">Arabic (العربية)</option>
+                <option value="pt">Portuguese (Português)</option>
+                <option value="en">English</option>
+                <option value="ru">Russian (Русский)</option>
+                <option value="ja">Japanese (日本語)</option>
+                <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="de">German (Deutsch)</option>
+                <option value="jv">Javanese (Jawa)</option>
+                <option value="ko">Korean (한국어)</option>
+                <option value="fr">French (Français)</option>
+                <option value="tr">Turkish (Türkçe)</option>
+                <option value="vi">Vietnamese (Tiếng Việt)</option>
+                <option value="it">Italian (Italiano)</option>
+                <option value="th">Thai (ไทย)</option>
+                <option value="pl">Polish (Polski)</option>
+                <option value="uk">Ukrainian (Українська)</option>
+                <option value="nl">Dutch (Nederlands)</option>
+                <option value="hy">Armenian (Հայերեն)</option>
+                <option value="ro">Romanian (Română)</option>
+              </select>
+            </div>
+            <button id="translate-btn"
+              class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-4 bg-primary text-lg font-bold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-50 hover:bg-primary/90"
+              disabled>
+              <span class="truncate">Translate Handbook</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="hidden items-center justify-center rounded-xl bg-gradient-to-br from-primary/30 to-background-dark p-8 lg:flex">
+          <div class="relative w-full max-w-sm">
+            <img class="aspect-square w-full rounded-xl object-cover"
+              data-alt="Abstract 3D rendering of interconnected geometric shapes in purple and blue hues"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqA0AdLXrMU8rwyhyTkfLJB-JpFj3mgp5dq6ZjciGTzPUC3Rd8sLwaVmluNB4L3LzzIg5FQ-EWZ6CaeZdNz2NmEQqUGyX0Wjua4rz1h3Y3d4Xn4Wwe8Vo3kABNB8U3qdKO9pVizQpG7Yx4vN-c9RIndkbAnuEHlLlOPtvHFVrl-ilH_tE2kEMe6MAJoMMS57CHbjrB_-4edk44PdOxxTw4vQy1uEVhXeZoiIkFoArW8-crkZGbaBQziIqGENpeWvLP8rc0Kd0Db-na" />
+            <div
+              class="absolute -bottom-8 -right-8 w-48 rounded-lg border border-[#33333D] bg-background-dark/80 p-4 backdrop-blur-sm">
+              <p class="text-sm font-bold text-white">Seamless Handbook Translations, Instantly.</p>
+              <p class="mt-1 text-xs text-white/70">Connect with your global team with perfectly formatted, accurately
+                translated handbooks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      const button = this;
+      menu.classList.toggle('open');
+      const icon = button.querySelector('span');
+      if (menu.classList.contains('open')) {
+        icon.textContent = 'close';
+      } else {
+        icon.textContent = 'menu';
+      }
+    });
+
+    // File upload functionality
+    let selectedFile = null;
+
+    // Create hidden file input
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.pdf,.docx';
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+
+    // Get elements using IDs for more reliable selection
+    const uploadButton = document.getElementById('upload-file-btn');
+    const dropZone = document.getElementById('drop-zone');
+    const translateButton = document.getElementById('translate-btn');
+    const targetLanguageSelect = document.getElementById('target-language');
+    const dropZoneText = document.getElementById('drop-zone-text');
+    
+    // Make sure all required elements exist
+    if (!dropZone) {
+      console.error('Drop zone not found');
+    }
+    if (!uploadButton) {
+      console.error('Upload button not found');
+    }
+    if (!translateButton) {
+      console.error('Translate button not found');
+    }
+
+    // Upload button click
+    uploadButton.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // File selected
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        selectedFile = e.target.files[0];
+        if (dropZoneText) {
+          dropZoneText.textContent = `Selected: ${selectedFile.name}`;
+        }
+        if (dropZone) {
+          dropZone.classList.add('border-primary');
+        }
+        updateTranslateButton();
+      }
+    });
+
+    // Drag and drop - ensure dropZone exists before adding listeners
+    if (dropZone) {
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('border-primary', 'bg-primary/10');
+      });
+
+      dropZone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('border-primary', 'bg-primary/10');
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('border-primary', 'bg-primary/10');
+
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          const file = files[0];
+          // Check if it's a valid file type
+          const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+          const validExtensions = ['.pdf', '.docx'];
+          const fileName = file.name.toLowerCase();
+          const isValid = validTypes.includes(file.type) || validExtensions.some(ext => fileName.endsWith(ext));
+          
+          if (isValid) {
+            selectedFile = file;
+            // Create a new FileList-like object for the file input
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
+            
+            if (dropZoneText) {
+              dropZoneText.textContent = `Selected: ${selectedFile.name}`;
+            }
+            dropZone.classList.add('border-primary');
+            updateTranslateButton();
+          } else {
+            alert('Please drop a PDF or DOCX file');
+          }
+        }
+      });
+
+      // Prevent default drag behavior on the whole page
+      document.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      document.addEventListener('drop', (e) => {
+        e.preventDefault();
+      });
+    }
+
+    // Update translate button state
+    function updateTranslateButton() {
+      if (!translateButton || !targetLanguageSelect) return;
+      
+      const hasFile = selectedFile !== null;
+      const hasLanguage = targetLanguageSelect.value && targetLanguageSelect.value !== '' && targetLanguageSelect.value !== 'Select Target Language';
+
+      if (hasFile && hasLanguage) {
+        translateButton.disabled = false;
+        translateButton.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        translateButton.disabled = true;
+        translateButton.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    targetLanguageSelect.addEventListener('change', updateTranslateButton);
+
+    // Translate button click
+    translateButton.addEventListener('click', async () => {
+      if (!selectedFile || !targetLanguageSelect.value) {
+        alert('Please select a file and target language');
+        return;
+      }
+
+      // Disable button and show loading state
+      translateButton.disabled = true;
+      const buttonText = translateButton.querySelector('span.truncate');
+      const originalText = buttonText.textContent;
+      buttonText.textContent = 'Translating...';
+
+      try {
+        console.log('Starting translation...');
+        console.log('File:', selectedFile.name);
+        console.log('Target language:', targetLanguageSelect.value);
+
+        // Create form data
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        formData.append('target_language', targetLanguageSelect.value);
+
+        console.log('Sending request to backend...');
+
+        // Detect API base URL - works with both Live Preview and FastAPI server
+        const isLivePreview = window.location.port === '3004';
+        const apiBase = isLivePreview 
+          ? 'http://localhost:8000' 
+          : (window.location.protocol === 'file:' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`);
+
+        // Send to backend - this now returns job_id immediately
+        const response = await fetch(`${apiBase}/api/translate`, {
+          method: 'POST',
+          body: formData
+        });
+
+        console.log('Received response:', response.status);
+
+        if (!response.ok) {
+          const error = await response.json();
+          console.error('Backend error:', error);
+          throw new Error(error.detail || 'Translation failed');
+        }
+
+        const result = await response.json();
+        console.log('Translation job created:', result);
+
+        // Redirect to progress page with job_id
+        // Reuse isLivePreview variable from above
+        const progressPath = isLivePreview 
+          ? `/dashboard/translation-progress/index.html?job=${result.job_id}`
+          : `/static/translation-progress/index.html?job=${result.job_id}`;
+        window.location.href = progressPath;
+
+      } catch (error) {
+        console.error('Translation error:', error);
+
+        // Check if it's a network error or timeout
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+          alert('Network error: Could not connect to the backend. Make sure the server is running on http://localhost:8000');
+        } else {
+          alert(`Translation failed: ${error.message}\n\nCheck the browser console (F12) for more details.`);
+        }
+
+        // Re-enable button on error
+        buttonText.textContent = originalText;
+        updateTranslateButton();
+      }
+    });
+  </script>
+</body>
+
+</html>

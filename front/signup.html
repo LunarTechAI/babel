@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up - Handbook Translator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8A2BE2",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#12121B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navigation -->
+        <header class="container mx-auto px-8 py-6">
+            <div class="flex items-center w-full">
+                <div class="flex items-center gap-4 flex-shrink-0">
+                    <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                            class="h-8" /></a>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8 ml-auto">
+                    <nav class="hidden items-center gap-8 md:flex">
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="about.html">About</a>
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="pricing.html">Pricing</a>
+                        <a class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90"
+                            href="signup.html">Sign Up</a>
+                    </nav>
+                    <button id="mobile-menu-button"
+                        class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                <nav class="flex flex-col gap-4 pb-4">
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="about.html">About</a>
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="pricing.html">Pricing</a>
+                    <a class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90"
+                        href="signup.html">Sign Up</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex flex-1 items-center justify-center px-4 py-16 md:py-32">
+            <form
+                class="bg-white/5 m-auto h-fit w-full max-w-md overflow-hidden rounded-xl border border-[#33333D] shadow-lg shadow-black/20 dark:bg-white/5"
+                onsubmit="event.preventDefault(); handleSignUp(event);">
+                <div class="bg-background-dark -m-px rounded-xl border border-[#33333D] p-8 pb-6">
+                    <div class="text-center">
+                        <h1 class="mb-1 mt-4 text-xl font-semibold text-white">Create a Handbook Translator Account</h1>
+                        <p class="text-sm text-white/70">Welcome! Create an account to get started</p>
+                    </div>
+
+                    <div class="mt-6 space-y-6">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-2">
+                                <label for="firstName" class="block text-sm font-medium text-white">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required
+                                    class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] px-3 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+                                <p class="text-xs text-red-400 hidden" id="firstNameError"></p>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="lastName" class="block text-sm font-medium text-white">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required
+                                    class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] px-3 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+                                <p class="text-xs text-red-400 hidden" id="lastNameError"></p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="email" class="block text-sm font-medium text-white">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] px-3 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+                            <p class="text-xs text-red-400 hidden" id="emailError"></p>
+                        </div>
+
+                        <div class="space-y-0.5">
+                            <label for="password" class="text-sm font-medium text-white">Password</label>
+                            <input type="password" id="password" name="password" required
+                                class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] px-3 py-2 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" />
+                            <p class="text-xs text-red-400 hidden" id="passwordError"></p>
+                        </div>
+
+                        <p class="text-xs text-red-400 text-center hidden" id="rootError"></p>
+
+                        <button type="submit" id="submitButton"
+                            class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-6 bg-primary text-base font-bold text-white transition-opacity hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span id="submitText">Create Account</span>
+                            <span id="submitLoader" class="hidden">
+                                <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                                <span class="ml-2">Creating Account...</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="my-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+                        <hr class="border-dashed border-[#33333D]" />
+                        <span class="text-white/60 text-xs">Or continue With</span>
+                        <hr class="border-dashed border-[#33333D]" />
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button type="button"
+                            class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-4 bg-[#191022] border border-[#33333D] text-sm font-medium text-white transition-colors hover:bg-white/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                <path fill="#4285F4"
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                <path fill="#34A853"
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                <path fill="#FBBC05"
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                                <path fill="#EA4335"
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                            </svg>
+                            <span>Google</span>
+                        </button>
+                        <button type="button"
+                            class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-4 bg-[#191022] border border-[#33333D] text-sm font-medium text-white transition-colors hover:bg-white/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256">
+                                <path fill="#f1511b" d="M121.666 121.666H0V0h121.666z"></path>
+                                <path fill="#80cc28" d="M256 121.666H134.335V0H256z"></path>
+                                <path fill="#00adef" d="M121.663 256.002H0V134.336h121.663z"></path>
+                                <path fill="#fbbc09" d="M256 256.002H134.335V134.336H256z"></path>
+                            </svg>
+                            <span>Microsoft</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-3">
+                    <p class="text-white/70 text-center text-sm">
+                        Have an account?
+                        <a href="signin.html"
+                            class="text-primary hover:text-primary/80 font-medium px-2 transition-colors">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[#33333D] py-12">
+            <div class="container mx-auto px-8">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-4">
+                                <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                        class="h-6" /></a>
+                            </div>
+                            <p class="text-sm text-white/70">Translate Books Brilliantly</p>
+                            <p class="text-xs text-white/60">A LUNARTECH Company</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Product</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="about.html">About</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="pricing.html">Pricing</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="signup.html">Sign
+                                Up</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Resources</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="#">Documentation</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">API</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Support</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Company</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="blog.html">Blog</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="careers.html">Careers</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#33333D] pt-8 text-center">
+                        <p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A
+                            LUNARTECH Company.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function handleSignUp(event) {
+                event.preventDefault();
+
+                const submitButton = document.getElementById('submitButton');
+                const submitText = document.getElementById('submitText');
+                const submitLoader = document.getElementById('submitLoader');
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitText.classList.add('hidden');
+                submitLoader.classList.remove('hidden');
+
+                // Get form values
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value
+                };
+
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset loading state
+                    submitButton.disabled = false;
+                    submitText.classList.remove('hidden');
+                    submitLoader.classList.add('hidden');
+
+                    // In a real application, you would handle the API response here
+                    // For now, we'll just show an alert
+                    alert('Account creation would be processed here. In production, this would connect to your authentication API.');
+
+                    // You could redirect to a success page or dashboard here
+                    // window.location.href = '/dashboard';
+                }, 1500);
+            }
+
+            document.getElementById('mobile-menu-button').addEventListener('click', function () {
+                const menu = document.getElementById('mobile-menu');
+                const button = this;
+                menu.classList.toggle('open');
+                const icon = button.querySelector('span');
+                if (menu.classList.contains('open')) {
+                    icon.textContent = 'close';
+                } else {
+                    icon.textContent = 'menu';
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>

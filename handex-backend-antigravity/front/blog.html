@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog - Handbook Translator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#8A2BE2",
+                    "background-light": "#f7f6f8",
+                    "background-dark": "#12121B",
+                },
+                fontFamily: {
+                    "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+    }
+    
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .mobile-menu.open {
+        max-height: 500px;
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Navigation -->
+<header class="container mx-auto px-8 py-6">
+<div class="flex items-center w-full">
+<div class="flex items-center gap-4 flex-shrink-0">
+<a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-8"/></a>
+</div>
+<div class="flex items-center gap-4 md:gap-8 ml-auto">
+<nav class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="about.html">About</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="pricing.html">Pricing</a>
+<a class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90" href="signup.html">Sign Up</a>
+</nav>
+<button id="mobile-menu-button" class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+<nav class="flex flex-col gap-4 pb-4">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2" href="about.html">About</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2" href="pricing.html">Pricing</a>
+<a class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90" href="signup.html">Sign Up</a>
+</nav>
+</div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-1">
+<!-- Hero Section -->
+<section class="container mx-auto px-8 py-16">
+<div class="mx-auto max-w-4xl text-center">
+<h1 class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em] text-white mb-6">Blog</h1>
+<p class="text-xl font-normal leading-relaxed text-white/70">Insights, tips, and updates about translation, AI, and global communication.</p>
+</div>
+</section>
+
+<!-- Blog Posts -->
+<section class="border-t border-[#33333D] py-16">
+<div class="container mx-auto px-8">
+<div class="mx-auto max-w-6xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Blog Post 1 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>March 15, 2024</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">The Future of AI-Powered Translation</h3>
+<p class="text-base text-white/70">Exploring how artificial intelligence is revolutionizing document translation and making global communication more accessible than ever.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+
+<!-- Blog Post 2 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>March 10, 2024</span>
+<span>•</span>
+<span>4 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">Best Practices for Multilingual Handbooks</h3>
+<p class="text-base text-white/70">Learn how to create and maintain employee handbooks that work seamlessly across different languages and cultures.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+
+<!-- Blog Post 3 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>March 5, 2024</span>
+<span>•</span>
+<span>6 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">Breaking Down Language Barriers in Remote Teams</h3>
+<p class="text-base text-white/70">How global companies are using translation technology to improve communication and collaboration across distributed teams.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+
+<!-- Blog Post 4 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>February 28, 2024</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">Format Preservation: Why It Matters</h3>
+<p class="text-base text-white/70">Understanding the importance of maintaining document formatting during translation and how it impacts user experience.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+
+<!-- Blog Post 5 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>February 20, 2024</span>
+<span>•</span>
+<span>7 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">50+ Languages: Our Global Reach</h3>
+<p class="text-base text-white/70">A deep dive into the languages we support and how we ensure quality translations across all language pairs.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+
+<!-- Blog Post 6 -->
+<article class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 overflow-hidden hover:border-primary/50 transition-colors">
+<div class="aspect-video bg-gradient-to-br from-primary/30 to-background-dark"></div>
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-2 text-sm text-white/60">
+<span>February 15, 2024</span>
+<span>•</span>
+<span>4 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white">Security and Privacy in Translation Services</h3>
+<p class="text-base text-white/70">How we protect your sensitive documents and ensure enterprise-grade security for all translations.</p>
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="#">
+<span>Read more</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="border-t border-[#33333D] py-16">
+<div class="container mx-auto px-8">
+<div class="mx-auto max-w-4xl">
+<div class="flex flex-col items-center gap-8 rounded-2xl border border-primary/50 bg-gradient-to-br from-primary/10 to-background-dark p-12 text-center">
+<h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Stay Updated</h2>
+<p class="max-w-2xl text-lg text-white/70">Subscribe to our newsletter to get the latest articles, product updates, and translation tips delivered to your inbox.</p>
+<div class="flex w-full max-w-md mx-auto gap-4">
+<input class="flex-1 rounded-lg border border-[#33333D] bg-[#191022] px-4 py-3 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50" placeholder="Enter your email" type="email"/>
+<button class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-base font-bold text-white transition-opacity hover:bg-primary/90">Subscribe</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-[#33333D] py-12">
+<div class="container mx-auto px-8">
+<div class="mx-auto max-w-6xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-6"/></a>
+</div>
+<p class="text-sm text-white/70">Translate your handbooks instantly with AI-powered accuracy.</p>
+<p class="text-xs text-white/60">A LUNARTECH Company</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-white">Product</h4>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="about.html">About</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="pricing.html">Pricing</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="signup.html">Sign Up</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-white">Resources</h4>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Documentation</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="#">API</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Support</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-white">Company</h4>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="blog.html">Blog</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="careers.html">Careers</a>
+<a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="border-t border-[#33333D] pt-8 text-center">
+<p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A LUNARTECH Company.</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script>
+document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    const button = this;
+    menu.classList.toggle('open');
+    const icon = button.querySelector('span');
+    if (menu.classList.contains('open')) {
+        icon.textContent = 'close';
+    } else {
+        icon.textContent = 'menu';
+    }
+});
+</script>
+</body>
+</html>
+

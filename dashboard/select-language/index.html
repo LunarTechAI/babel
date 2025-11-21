@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Handbook Translator - Select Language</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#8A2BE2",
+            "background-light": "#f7f6f8",
+            "background-dark": "#12121B",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/static/public/styles.css">
+  <style>
+    /* Keep only specific styles not in global CSS if any, otherwise empty or minimal */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+  <div class="relative flex min-h-screen w-full flex-col">
+    <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl w-full flex flex-col">
+        <!-- Main nav row -->
+        <div class="flex items-center w-full">
+          <!-- Logo -->
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <a href="/static/index.html">
+              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
+            </a>
+          </div>
+
+          <!-- Right side - icons + desktop links -->
+          <div class="ml-auto flex items-center gap-4 sm:gap-6">
+            <nav class="hidden sm:flex items-center gap-6">
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/index.html">Dashboard</a>
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/my-translations/index.html">My Translations</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">notifications</span>
+              </button>
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">help</span>
+              </button>
+              <a href="/static/account/index.html"
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                <span class="material-symbols-outlined text-xl">account_circle</span>
+              </a>
+              <button id="mobile-menu-button"
+                class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu (keep existing or replace with this) -->
+        <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
+          <nav class="flex flex-col gap-4 pb-4">
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/index.html">Dashboard</a>
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/my-translations/index.html">My Translations</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto flex flex-1 flex-col items-center justify-center px-8 py-10">
+      <div class="flex w-full max-w-4xl flex-col items-center gap-8">
+        <div class="flex flex-col items-center gap-3 text-center">
+          <p class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Select Languages</p>
+          <p class="max-w-xl text-base font-normal leading-normal text-white/70">Choose the original language of your
+            handbook and the language you want to translate it into.</p>
+        </div>
+        <div class="flex w-full max-w-2xl items-center gap-6">
+          <div class="flex items-center gap-3">
+            <div class="flex size-8 items-center justify-center rounded-full border-2 border-primary text-primary">
+              <span class="material-symbols-outlined text-base">check</span>
+            </div>
+            <p class="text-sm font-bold text-white/70">Upload</p>
+          </div>
+          <div class="h-px flex-1 bg-primary"></div>
+          <div class="flex items-center gap-3">
+            <div class="flex size-8 items-center justify-center rounded-full bg-primary text-white">
+              <span class="font-bold">2</span>
+            </div>
+            <p class="text-sm font-bold text-white">Select Language</p>
+          </div>
+          <div class="h-px flex-1 bg-[#33333D]"></div>
+          <div class="flex items-center gap-3">
+            <div class="flex size-8 items-center justify-center rounded-full border-2 border-[#33333D] text-white/70">
+              <span class="font-bold">3</span>
+            </div>
+            <p class="text-sm font-bold text-white/70">Translate</p>
+          </div>
+        </div>
+        <div class="grid w-full grid-cols-1 gap-6 rounded-xl border border-[#33333D] bg-white/5 p-8 md:grid-cols-2">
+          <div class="flex flex-col gap-4">
+            <label class="text-base font-medium text-white" for="source-language">Source Language</label>
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/50">search</span>
+              <input
+                class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] py-2.5 pl-10 pr-4 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50"
+                id="source-language" placeholder="Search language..." type="text" />
+            </div>
+            <div class="max-h-60 overflow-y-auto pr-2">
+              <ul class="space-y-1" id="source-language-list">
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="English" href="javascript:void(0)">English (Auto-detected)</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Arabic" href="javascript:void(0)">Arabic</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Armenian" href="javascript:void(0)">Armenian</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Chinese" href="javascript:void(0)">Chinese</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="French" href="javascript:void(0)">French</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="German" href="javascript:void(0)">German</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Hebrew" href="javascript:void(0)">Hebrew</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Italian" href="javascript:void(0)">Italian</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Japanese" href="javascript:void(0)">Japanese</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Portuguese" href="javascript:void(0)">Portuguese</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Russian" href="javascript:void(0)">Russian</a></li>
+                <li><a
+                    class="language-option source-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Spanish" href="javascript:void(0)">Spanish</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <label class="text-base font-medium text-white" for="target-language">Target Language</label>
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/50">search</span>
+              <input
+                class="form-input w-full rounded-lg border border-[#33333D] bg-[#191022] py-2.5 pl-10 pr-4 text-base text-white placeholder:text-white/60 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/50"
+                id="target-language" placeholder="Search language..." type="text" />
+            </div>
+            <div class="max-h-60 overflow-y-auto pr-2">
+              <ul class="space-y-1" id="target-language-list">
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Arabic" href="javascript:void(0)">Arabic</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Armenian" href="javascript:void(0)">Armenian</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Chinese" href="javascript:void(0)">Chinese</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="French" href="javascript:void(0)">French</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="German" href="javascript:void(0)">German</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Hebrew" href="javascript:void(0)">Hebrew</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Italian" href="javascript:void(0)">Italian</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Japanese" href="javascript:void(0)">Japanese</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Portuguese" href="javascript:void(0)">Portuguese</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Russian" href="javascript:void(0)">Russian</a></li>
+                <li><a
+                    class="language-option target-language block rounded-md px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 cursor-pointer"
+                    data-language="Spanish" href="javascript:void(0)">Spanish</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full items-center justify-end gap-4">
+          <button
+            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[#33333D] text-base font-bold text-white transition-colors hover:bg-white/20">
+            <span class="truncate">Back</span>
+          </button>
+          <button
+            class="flex w-full max-w-xs cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-base font-bold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-50 hover:bg-primary/90">
+            <span class="truncate">Continue</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      const button = this;
+      menu.classList.toggle('open');
+      const icon = button.querySelector('span');
+      if (menu.classList.contains('open')) {
+        icon.textContent = 'close';
+      } else {
+        icon.textContent = 'menu';
+      }
+    });
+
+    // Language selection functionality
+    document.querySelectorAll('.source-language').forEach(function (option) {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        // Remove selected class from all source language options
+        document.querySelectorAll('.source-language').forEach(function (item) {
+          item.classList.remove('bg-primary/20', 'text-primary', 'font-medium');
+          item.classList.add('text-white/80');
+        });
+        // Add selected class to clicked option
+        this.classList.add('bg-primary/20', 'text-primary', 'font-medium');
+        this.classList.remove('text-white/80');
+      });
+    });
+
+    document.querySelectorAll('.target-language').forEach(function (option) {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        // Remove selected class from all target language options
+        document.querySelectorAll('.target-language').forEach(function (item) {
+          item.classList.remove('bg-primary/20', 'text-primary', 'font-medium');
+          item.classList.add('text-white/80');
+        });
+        // Add selected class to clicked option
+        this.classList.add('bg-primary/20', 'text-primary', 'font-medium');
+        this.classList.remove('text-white/80');
+      });
+    });
+
+    // Set default selection: Spanish for target language
+    document.querySelector('.target-language[data-language="Spanish"]').classList.add('bg-primary/20', 'text-primary', 'font-medium');
+    document.querySelector('.target-language[data-language="Spanish"]').classList.remove('text-white/80');
+
+    // Search functionality for source language
+    const sourceLanguageInput = document.getElementById('source-language');
+    const sourceLanguageList = document.getElementById('source-language-list');
+
+    sourceLanguageInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase().trim();
+      const languageItems = sourceLanguageList.querySelectorAll('li');
+
+      languageItems.forEach(function (item) {
+        const languageText = item.textContent.toLowerCase();
+        if (languageText.includes(searchTerm)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
+    // Search functionality for target language
+    const targetLanguageInput = document.getElementById('target-language');
+    const targetLanguageList = document.getElementById('target-language-list');
+
+    targetLanguageInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase().trim();
+      const languageItems = targetLanguageList.querySelectorAll('li');
+
+      languageItems.forEach(function (item) {
+        const languageText = item.textContent.toLowerCase();
+        if (languageText.includes(searchTerm)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

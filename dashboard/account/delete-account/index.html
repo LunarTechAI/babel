@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Delete Account - Handbook Translator</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#8A2BE2",
+            "background-light": "#f7f6f8",
+            "background-dark": "#12121B",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/static/public/styles.css">
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+    .card-shadow {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+        0 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(138, 43, 226, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .button-shadow {
+      box-shadow: 0 4px 14px 0 rgba(138, 43, 226, 0.4),
+        0 2px 4px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .button-shadow:hover {
+      box-shadow: 0 8px 20px 0 rgba(138, 43, 226, 0.5),
+        0 4px 8px 0 rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+
+  <!-- STRONG & CLEAN HEADER SOLUTION -->
+  <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
+    <div class="mx-auto max-w-7xl w-full flex flex-col">
+      <!-- Main navigation row -->
+      <div class="flex items-center w-full">
+        <!-- Logo -->
+        <div class="flex items-center gap-4 flex-shrink-0">
+          <a href="/static/index.html">
+            <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
+          </a>
+        </div>
+
+        <!-- Right side - perfectly flush to the edge -->
+        <div class="ml-auto flex items-center gap-4 sm:gap-6">
+          <!-- Desktop nav links -->
+          <nav class="hidden sm:flex items-center gap-6">
+            <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+              href="/static/index.html">Dashboard</a>
+            <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+              href="/static/my-translations/index.html">My Translations</a>
+          </nav>
+
+          <!-- Icons -->
+          <div class="flex items-center gap-2">
+            <button
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+              <span class="material-symbols-outlined text-xl">notifications</span>
+            </button>
+            <button
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+              <span class="material-symbols-outlined text-xl">help</span>
+            </button>
+            <a href="/static/index.html"
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white transition-colors">
+              <span class="material-symbols-outlined text-xl">account_circle</span>
+            </a>
+            <button id="mobile-menu-button"
+              class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+              <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
+        <nav class="flex flex-col gap-4 pb-4">
+          <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+            href="/static/index.html">Dashboard</a>
+          <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+            href="/static/my-translations/index.html">My Translations</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="container mx-auto px-8 py-8 max-w-4xl">
+      <div class="mb-6">
+        <a href="/static/index.html"
+          class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+          Back to Account Settings
+        </a>
+      </div>
+
+      <h1 class="text-3xl font-black text-white mb-8">Delete Account</h1>
+
+      <div class="feature-card card-shadow rounded-xl p-8 border-2 border-red-500/30">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="flex size-12 items-center justify-center rounded-lg bg-red-500/20 text-red-400">
+            <span class="material-symbols-outlined text-2xl">warning</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-xl font-bold text-red-400 mb-2">Warning: This action cannot be undone</h2>
+            <p class="text-sm text-white/70 mb-4">Deleting your account will permanently remove all of your data,
+              including:</p>
+            <ul class="list-disc list-inside text-sm text-white/70 space-y-1 mb-4">
+              <li>All your translations and translation history</li>
+              <li>Your profile information and settings</li>
+              <li>Your subscription and billing information</li>
+              <li>All associated data and files</li>
+            </ul>
+            <p class="text-sm text-white/70">This action is permanent and cannot be reversed.</p>
+          </div>
+        </div>
+
+        <form class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Type "DELETE" to confirm</label>
+            <input type="text" placeholder="DELETE"
+              class="w-full rounded-lg border border-red-500/30 bg-[#191022] px-4 py-2 text-base text-white placeholder:text-white/60 focus:border-red-500 focus:outline-0 focus:ring-2 focus:ring-red-500/50" />
+            <p class="mt-2 text-xs text-white/60">You must type "DELETE" in all caps to confirm account deletion.</p>
+          </div>
+
+          <div class="flex items-center gap-3 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+            <input type="checkbox" id="confirm-delete"
+              class="w-4 h-4 rounded border-[#33333D] bg-[#191022] text-red-500 focus:ring-2 focus:ring-red-500/50" />
+            <label for="confirm-delete" class="text-sm text-white/70">I understand that this action cannot be undone and
+              I want to permanently delete my account.</label>
+          </div>
+
+          <div class="flex justify-end gap-4 pt-4">
+            <a href="/static/index.html"
+              class="px-6 py-2 rounded-lg border border-[#33333D] text-sm font-medium text-white hover:bg-white/5 transition-colors">
+              Cancel
+            </a>
+            <button type="submit"
+              class="px-6 py-2 rounded-lg bg-red-500 text-sm font-medium text-white hover:bg-red-600 transition-colors"
+              disabled>
+              Delete Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+      const icon = this.querySelector('span');
+      icon.textContent = menu.classList.contains('open') ? 'close' : 'menu';
+    });
+
+    // Delete confirmation logic
+    const confirmInput = document.querySelector('input[type="text"]');
+    const confirmCheckbox = document.getElementById('confirm-delete');
+    const deleteButton = document.querySelector('button[type="submit"]');
+
+    function checkDeleteConfirmation() {
+      deleteButton.disabled = !(confirmInput.value === 'DELETE' && confirmCheckbox.checked);
+    }
+
+    confirmInput.addEventListener('input', checkDeleteConfirmation);
+    confirmCheckbox.addEventListener('change', checkDeleteConfirmation);
+  </script>
+</body>
+
+</html>

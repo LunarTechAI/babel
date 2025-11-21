@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Handbook Translator - Translation in Progress</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#8A2BE2",
+            "background-light": "#f7f6f8",
+            "background-dark": "#12121B",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/static/public/styles.css">
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+  <div class="relative flex min-h-screen w-full flex-col">
+    <header class="w-full px-4 sm:px-6 lg:px-8 py-6 border-b border-white/5 bg-background-dark/80 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl w-full flex flex-col">
+        <!-- Main nav row -->
+        <div class="flex items-center w-full">
+          <!-- Logo -->
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <a href="/static/index.html">
+              <img src="/static/public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY" class="h-9 w-auto" />
+            </a>
+          </div>
+
+          <!-- Right side - icons + desktop links -->
+          <div class="ml-auto flex items-center gap-4 sm:gap-6">
+            <nav class="hidden sm:flex items-center gap-6">
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/index.html">Dashboard</a>
+              <a class="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                href="/static/my-translations/index.html">My Translations</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">notifications</span>
+              </button>
+              <button
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#33333D] text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-xl">help</span>
+              </button>
+              <a href="/static/account/index.html"
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                <span class="material-symbols-outlined text-xl">account_circle</span>
+              </a>
+              <button id="mobile-menu-button"
+                class="sm:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu sm:hidden mt-4 w-full">
+          <nav class="flex flex-col gap-4 pb-4">
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/index.html">Dashboard</a>
+            <a class="text-sm font-medium text-white/80 hover:text-white py-2 transition-colors"
+              href="/static/my-translations/index.html">My Translations</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto flex flex-1 items-center justify-center px-8 py-10">
+      <div class="w-full max-w-lg text-center">
+        <div class="flex flex-col items-center gap-8 rounded-xl border border-[#33333D] bg-white/5 p-8 md:p-12">
+          <div class="flex flex-col items-center gap-3">
+            <div class="flex size-16 items-center justify-center rounded-full bg-primary/20 text-primary">
+              <span class="material-symbols-outlined text-4xl">translate</span>
+            </div>
+            <h1 id="status-title" class="text-3xl font-bold tracking-tight text-white">Translation in Progress...</h1>
+            <p id="status-message" class="text-base text-white/70">Your handbook is being translated. This may take a
+              few moments. Please do not close this page.</p>
+          </div>
+          <div class="w-full">
+            <div class="flex justify-between text-sm font-medium text-white/70">
+              <span>Source</span>
+              <span id="target-lang">Target</span>
+            </div>
+            <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-[#33333D]">
+              <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-500"
+                style="width: 5%;"></div>
+            </div>
+            <p id="progress-text" class="mt-2 text-sm text-white">5% Complete</p>
+          </div>
+          <div class="flex w-full flex-col gap-3">
+            <button id="download-btn"
+              class="flex w-full cursor-not-allowed items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-primary text-lg font-bold text-white opacity-50"
+              disabled>
+              <span class="material-symbols-outlined">download</span>
+              <span class="truncate">Download Handbook</span>
+            </button>
+            <button
+              class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-4 bg-transparent text-sm font-medium text-white/70 transition-colors hover:bg-white/10"
+              onclick="window.location.href='/static/index.html'">
+              <span class="truncate">Back to Dashboard</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    function init() {
+      console.log('Translation progress page initialized');
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function () {
+          const menu = document.getElementById('mobile-menu');
+          const button = this;
+          menu.classList.toggle('open');
+          const icon = button.querySelector('span');
+          if (menu.classList.contains('open')) {
+            icon.textContent = 'close';
+          } else {
+            icon.textContent = 'menu';
+          }
+        });
+      }
+
+      // Get job_id from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const jobId = urlParams.get('job');
+      console.log('Job ID from URL:', jobId);
+
+      // Elements
+      const progressBar = document.getElementById('progress-bar');
+      const progressText = document.getElementById('progress-text');
+      const statusTitle = document.getElementById('status-title');
+      const statusMessage = document.getElementById('status-message');
+      const downloadBtn = document.getElementById('download-btn');
+      const targetLang = document.getElementById('target-lang');
+
+      if (!jobId) {
+        console.warn('No Job ID found. Redirecting...');
+        statusTitle.textContent = 'No Job ID Provided';
+        statusMessage.textContent = 'Please access this page through the upload page. Redirecting...';
+        const isLivePreview = window.location.port === '3004';
+        const dashboardPath = isLivePreview ? '/dashboard/index.html' : '/static/index.html';
+        setTimeout(() => {
+          window.location.href = dashboardPath;
+        }, 2000);
+        return;
+      }
+
+      let pollInterval;
+      let jobCompleted = false;
+
+      // API base URL detection
+      function getApiBase() {
+        const isLivePreview = window.location.port === '3004';
+        return isLivePreview
+          ? 'http://localhost:8000'
+          : (window.location.protocol === 'file:' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`);
+      }
+
+      // Poll job status
+      async function pollJobStatus() {
+        if (jobCompleted) return;
+
+        try {
+          const apiBase = getApiBase();
+          const apiUrl = `${apiBase}/api/job/${jobId}`;
+          console.log(`Polling job status: ${apiUrl}`);
+
+          const response = await fetch(apiUrl);
+
+          if (!response.ok) {
+            console.error(`API Error: ${response.status} ${response.statusText}`);
+            if (response.status === 404) {
+              statusMessage.textContent = 'Job not found. Please start a new translation.';
+              statusMessage.classList.add('text-red-400');
+              return;
+            }
+            throw new Error('Failed to fetch job status');
+          }
+
+          const job = await response.json();
+          console.log('Job status received:', job);
+
+          // Update progress bar based on actual BabelDOC progress
+          const progressValue = typeof job.progress === 'number' ? job.progress : 5;
+          const displayProgress = Math.min(Math.max(progressValue, 5), 100);
+
+          progressBar.style.width = `${displayProgress}%`;
+          progressBar.style.transition = 'width 1s cubic-bezier(0.4, 0, 0.2, 1)';
+          progressText.textContent = `${displayProgress}% Complete`;
+
+          // Update status message with BabelDOC stage message
+          if (job.message) {
+            statusMessage.textContent = job.message;
+            statusMessage.classList.remove('text-red-400');
+          }
+
+          // Update target language
+          if (job.target_language) {
+            targetLang.textContent = job.target_language.toUpperCase();
+          }
+
+          // Handle completion
+          if (job.status === 'completed') {
+            console.log('Job completed successfully');
+            jobCompleted = true;
+            clearInterval(pollInterval);
+
+            // Final update to 100%
+            progressBar.style.width = '100%';
+            progressText.textContent = '100% Complete';
+            statusTitle.textContent = 'Translation Complete!';
+            statusMessage.textContent = job.message || 'Your handbook has been successfully translated.';
+
+            // Redirect to completion page with translated file
+            setTimeout(() => {
+              const isLivePreview = window.location.port === '3004';
+              const completePath = isLivePreview
+                ? `/dashboard/translation-complete/index.html?file=${encodeURIComponent(job.translated_file)}`
+                : `/static/translation-complete/index.html?file=${encodeURIComponent(job.translated_file)}`;
+              console.log(`Redirecting to: ${completePath}`);
+              window.location.href = completePath;
+            }, 1500);
+
+            return;
+          }
+
+          // Handle failure
+          if (job.status === 'failed') {
+            console.error('Job failed:', job.error);
+            jobCompleted = true;
+            clearInterval(pollInterval);
+            statusTitle.textContent = 'Translation Failed';
+            statusMessage.textContent = job.error || 'An error occurred during translation.';
+            statusMessage.classList.add('text-red-400');
+            progressBar.style.backgroundColor = '#ef4444';
+            downloadBtn.innerHTML = '<span>Try Again</span>';
+            downloadBtn.onclick = () => {
+              const isLivePreview = window.location.port === '3004';
+              const uploadPath = isLivePreview
+                ? '/dashboard/upload-page/index.html'
+                : '/static/upload-page/index.html';
+              window.location.href = uploadPath;
+            };
+            downloadBtn.disabled = false;
+            downloadBtn.classList.remove('cursor-not-allowed', 'opacity-50');
+            downloadBtn.classList.add('cursor-pointer');
+          }
+
+        } catch (error) {
+          console.error('Error polling job status:', error);
+          statusMessage.textContent = 'Error connecting to server. Please refresh the page.';
+          statusMessage.classList.add('text-red-400');
+        }
+      }
+
+      // Start polling immediately, then every 2 seconds
+      pollJobStatus();
+      pollInterval = setInterval(pollJobStatus, 2000);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+
+</html>

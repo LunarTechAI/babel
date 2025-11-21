@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Handbook Translator - Translate Your Handbooks Instantly</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#9333EA",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#0A0118",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="premium-bg font-display text-[#EAEAEA] min-h-screen flex flex-col">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navigation -->
+        <header class="glass-panel-low sticky top-0 z-50 border-b border-[var(--border-glass)]">
+            <div class="container mx-auto px-8 py-4">
+                <div class="flex items-center w-full">
+                    <div class="flex items-center gap-4 flex-shrink-0">
+                        <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                class="h-8" /></a>
+                    </div>
+                    <div class="flex items-center gap-4 md:gap-8 ml-auto">
+                        <nav class="hidden items-center gap-8 md:flex">
+                            <a class="text-sm font-medium text-white/80 transition-colors hover:text-white hover:text-glow-purple"
+                                href="about.html">About</a>
+                            <a class="text-sm font-medium text-white/80 transition-colors hover:text-white hover:text-glow-purple"
+                                href="pricing.html">Pricing</a>
+                            <a class="btn-border-beam" href="signup.html">
+                                <span class="btn-border-beam-inner">Sign Up</span>
+                            </a>
+                        </nav>
+                        <button id="mobile-menu-button"
+                            class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                            <span class="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                    <nav class="flex flex-col gap-4 pb-4">
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                            href="about.html">About</a>
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                            href="pricing.html">Pricing</a>
+                        <a class="btn-border-beam w-full justify-center" href="signup.html">
+                            <span class="btn-border-beam-inner w-full">Sign Up</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="flex-1 relative overflow-hidden">
+            <!-- Ambient Glow Effects -->
+            <div class="glow-purple top-20 left-20 w-96 h-96"></div>
+            <div class="glow-cyan bottom-20 right-20 w-96 h-96"></div>
+
+            <section class="container mx-auto px-8 py-20 relative z-10">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+                        <div class="flex flex-col gap-8">
+                            <div class="flex flex-col gap-4">
+                                <h1
+                                    class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em] text-white text-glow-purple">
+                                    Translate Your Handbooks in Seconds</h1>
+                                <p class="text-xl font-normal leading-relaxed text-white/70">Seamless handbook
+                                    translations for global teams. Supports 50+ languages and preserves formatting
+                                    perfectly.</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a class="btn-border-beam" href="signup.html">
+                                    <span class="btn-border-beam-inner text-lg px-8 py-4 h-14">Get Started Free</span>
+                                </a>
+                                <a class="btn-glass-outline h-14 flex items-center justify-center text-lg"
+                                    href="about.html">Learn More</a>
+                            </div>
+                            <div class="flex items-center gap-8 pt-4">
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white text-gradient-purple">50+</p>
+                                    <p class="text-sm text-white/70">Languages</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white text-gradient-purple">99.9%</p>
+                                    <p class="text-sm text-white/70">Uptime</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-3xl font-bold text-white text-gradient-purple">24/7</p>
+                                    <p class="text-sm text-white/70">Support</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-center rounded-xl glass-panel p-8 hover-lift">
+                            <div class="relative w-full max-w-md">
+                                <img class="aspect-square w-full rounded-xl object-cover border border-[var(--border-glass)]"
+                                    data-alt="Abstract 3D rendering of interconnected geometric shapes in purple and blue hues"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqA0AdLXrMU8rwyhyTkfLJB-JpFj3mgp5dq6ZjciGTzPUC3Rd8sLwaVmluNB4L3LzzIg5FQ-EWZ6CaeZdNz2NmEQqUGyX0Wjua4rz1h3Y3d4Xn4Wwe8Vo3kABNB8U3qdKO9pVizQpG7Yx4vN-c9RIndkbAnuEHlLlOPtvHFVrl-ilH_tE2kEMe6MAJoMMS57CHbjrB_-4edk44PdOxxTw4vQy1uEVhXeZoiIkFoArW8-crkZGbaBQziIqGENpeWvLP8rc0Kd0Db-na" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="border-t border-[var(--border-glass)] py-20 relative z-10">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-6xl">
+                        <div class="flex flex-col items-center gap-4 mb-16 text-center">
+                            <h2
+                                class="text-4xl font-black leading-tight tracking-[-0.033em] text-white text-glow-purple">
+                                Why Choose Handbook Translator?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">Everything you need to translate handbooks
+                                quickly and accurately.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">speed</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Lightning Fast</h3>
+                                <p class="text-base text-white/70">Translate entire handbooks in seconds, not hours. Get
+                                    your translated documents instantly.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">verified</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Accurate Translations</h3>
+                                <p class="text-base text-white/70">AI-powered translations with human-level accuracy.
+                                    Preserve context and meaning perfectly.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">format_paint</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Format Preserved</h3>
+                                <p class="text-base text-white/70">Maintains original formatting, layouts, and styling.
+                                    Your documents look perfect in any language.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">security</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Secure & Private</h3>
+                                <p class="text-base text-white/70">Enterprise-grade security. Your documents are
+                                    encrypted and never shared with third parties.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">language</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">50+ Languages</h3>
+                                <p class="text-base text-white/70">Support for all major languages worldwide. Translate
+                                    to and from any language combination.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl glass-card hover-lift">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-[var(--primary-purple)]/20 text-[var(--primary-purple)] shadow-[0_0_15px_rgba(147,51,234,0.3)]">
+                                    <span class="material-symbols-outlined text-3xl">support_agent</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">24/7 Support</h3>
+                                <p class="text-base text-white/70">Round-the-clock customer support. We're here to help
+                                    whenever you need us.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="signup" class="border-t border-[var(--border-glass)] py-20 relative z-10">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div
+                            class="flex flex-col items-center gap-8 rounded-2xl glass-panel p-12 text-center relative overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-[var(--primary-purple)]/20 to-transparent pointer-events-none">
+                            </div>
+                            <h2
+                                class="text-4xl font-black leading-tight tracking-[-0.033em] text-white text-glow-purple relative z-10">
+                                Ready to Get Started?</h2>
+                            <p class="max-w-2xl text-lg text-white/70 relative z-10">Join thousands of companies
+                                translating their handbooks with Handbook Translator. Start your free trial today.</p>
+                            <div class="relative z-10">
+                                <a class="btn-border-beam" href="signup.html">
+                                    <span class="btn-border-beam-inner text-lg px-8 py-4 h-14">Sign Up Free</span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-white/60 relative z-10">No credit card required. 14-day free trial.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[var(--border-glass)] py-12 glass-panel-low relative z-10">
+            <div class="container mx-auto px-8">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-4">
+                                <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                        class="h-6" /></a>
+                            </div>
+                            <p class="text-sm text-white/70">Translate your handbooks instantly with AI-powered
+                                accuracy.</p>
+                            <p class="text-xs text-white/60">A LUNARTECH Company</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white text-glow-purple">Product</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="about.html">About</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="pricing.html">Pricing</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="signup.html">Sign Up</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white text-glow-purple">Resources</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="#">Documentation</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="#">API</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="#">Support</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white text-glow-purple">Company</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="blog.html">Blog</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="careers.html">Careers</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors hover:text-glow-purple"
+                                href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-[var(--border-glass)] pt-8 text-center">
+                        <p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A
+                            LUNARTECH Company.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            const button = this;
+            menu.classList.toggle('open');
+            const icon = button.querySelector('span');
+            if (menu.classList.contains('open')) {
+                icon.textContent = 'close';
+            } else {
+                icon.textContent = 'menu';
+            }
+        });
+    </script>
+</body>
+
+</html>

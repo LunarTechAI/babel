@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pricing - Handbook Translator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8A2BE2",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#12121B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        /* Enhanced shadows and depth */
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(138, 43, 226, 0.1),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .card-shadow-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-shadow-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(138, 43, 226, 0.3),
+                0 10px 10px -5px rgba(138, 43, 226, 0.2),
+                0 0 0 1px rgba(138, 43, 226, 0.2),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .button-shadow {
+            box-shadow: 0 4px 14px 0 rgba(138, 43, 226, 0.4),
+                0 2px 4px 0 rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .button-shadow:hover {
+            box-shadow: 0 8px 20px 0 rgba(138, 43, 226, 0.5),
+                0 4px 8px 0 rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .button-shadow:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px 0 rgba(138, 43, 226, 0.3);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(138, 43, 226, 0.1) 50%, rgba(18, 18, 27, 0.9) 100%);
+            box-shadow: 0 20px 40px -10px rgba(138, 43, 226, 0.4),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(18, 18, 27, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .pricing-card-popular {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(138, 43, 226, 0.05) 100%);
+            border: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navigation -->
+        <header class="nav-glass container mx-auto px-8 py-6">
+            <div class="flex items-center w-full">
+                <div class="flex items-center gap-4 flex-shrink-0">
+                    <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                            class="h-8" /></a>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8 ml-auto">
+                    <nav class="hidden items-center gap-8 md:flex">
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="about.html">About</a>
+                        <a class="text-sm font-medium text-white transition-colors hover:text-white/80"
+                            href="pricing.html">Pricing</a>
+                        <a class="button-shadow flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-all hover:bg-primary/90"
+                            href="signup.html">Sign Up</a>
+                    </nav>
+                    <button id="mobile-menu-button"
+                        class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                <nav class="flex flex-col gap-4 pb-4">
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="about.html">About</a>
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="pricing.html">Pricing</a>
+                    <a class="button-shadow flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-all hover:bg-primary/90"
+                        href="signup.html">Sign Up</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="container mx-auto px-8 py-16">
+                <div class="mx-auto max-w-4xl text-center">
+                    <h1 class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em] text-white mb-6">
+                        Simple, Transparent Pricing</h1>
+                    <p class="text-xl font-normal leading-relaxed text-white/70">Choose the plan that's right for your
+                        team. All plans include a 14-day free trial.</p>
+                </div>
+            </section>
+
+            <!-- Pricing Cards -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-6xl">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Starter Plan -->
+                            <div class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div class="flex flex-col gap-4 mb-8">
+                                    <h3 class="text-2xl font-bold text-white">Starter</h3>
+                                    <p class="text-sm text-white/70">Perfect for small teams getting started</p>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="text-5xl font-black text-white">$29</span>
+                                        <span class="text-lg text-white/70">/month</span>
+                                    </div>
+                                </div>
+                                <ul class="flex flex-col gap-4 mb-8 flex-1">
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Up to 10 handbooks/month</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">50+ languages supported</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Format preservation</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Email support</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">14-day free trial</span>
+                                    </li>
+                                </ul>
+                                <a class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-[#33333D] text-base font-bold text-white transition-colors hover:bg-white/20"
+                                    href="signup.html">Start Free Trial</a>
+                            </div>
+
+                            <!-- Professional Plan -->
+                            <div class="flex flex-col rounded-xl border-2 border-primary bg-primary/10 p-8 relative">
+                                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                                    <span
+                                        class="flex items-center justify-center rounded-full bg-primary px-4 py-1 text-xs font-bold text-white">Most
+                                        Popular</span>
+                                </div>
+                                <div class="flex flex-col gap-4 mb-8">
+                                    <h3 class="text-2xl font-bold text-white">Professional</h3>
+                                    <p class="text-sm text-white/70">For growing teams and businesses</p>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="text-5xl font-black text-white">$99</span>
+                                        <span class="text-lg text-white/70">/month</span>
+                                    </div>
+                                </div>
+                                <ul class="flex flex-col gap-4 mb-8 flex-1">
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Up to 100 handbooks/month</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">50+ languages supported</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Format preservation</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Priority support</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">API access</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Custom integrations</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">14-day free trial</span>
+                                    </li>
+                                </ul>
+                                <a class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-base font-bold text-white transition-opacity hover:bg-primary/90"
+                                    href="signup.html">Start Free Trial</a>
+                            </div>
+
+                            <!-- Enterprise Plan -->
+                            <div class="flex flex-col rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div class="flex flex-col gap-4 mb-8">
+                                    <h3 class="text-2xl font-bold text-white">Enterprise</h3>
+                                    <p class="text-sm text-white/70">For large organizations with custom needs</p>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="text-5xl font-black text-white">Custom</span>
+                                    </div>
+                                </div>
+                                <ul class="flex flex-col gap-4 mb-8 flex-1">
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Unlimited handbooks</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">50+ languages supported</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Format preservation</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Dedicated support</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Full API access</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">Custom integrations</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">SLA guarantee</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                        <span class="text-sm text-white/80">On-premise option</span>
+                                    </li>
+                                </ul>
+                                <a class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-[#33333D] text-base font-bold text-white transition-colors hover:bg-white/20"
+                                    href="signup.html">Contact Sales</a>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div class="flex flex-col items-center gap-4 mb-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Frequently
+                                Asked Questions</h2>
+                            <p class="max-w-2xl text-lg text-white/70">Everything you need to know about our pricing.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-6">
+                            <div class="flex flex-col gap-3 rounded-xl border border-[#33333D] bg-white/5 p-6">
+                                <h3 class="text-lg font-bold text-white">Can I change plans later?</h3>
+                                <p class="text-base text-white/70">Yes, you can upgrade or downgrade your plan at any
+                                    time. Changes take effect immediately, and we'll prorate the billing.</p>
+                            </div>
+                            <div class="flex flex-col gap-3 rounded-xl border border-[#33333D] bg-white/5 p-6">
+                                <h3 class="text-lg font-bold text-white">What happens after my free trial?</h3>
+                                <p class="text-base text-white/70">After your 14-day free trial, you'll be automatically
+                                    enrolled in the plan you selected. You can cancel anytime before the trial ends with
+                                    no charges.</p>
+                            </div>
+                            <div class="flex flex-col gap-3 rounded-xl border border-[#33333D] bg-white/5 p-6">
+                                <h3 class="text-lg font-bold text-white">Do you offer refunds?</h3>
+                                <p class="text-base text-white/70">We offer a 30-day money-back guarantee. If you're not
+                                    satisfied, contact us within 30 days for a full refund.</p>
+                            </div>
+                            <div class="flex flex-col gap-3 rounded-xl border border-[#33333D] bg-white/5 p-6">
+                                <h3 class="text-lg font-bold text-white">What payment methods do you accept?</h3>
+                                <p class="text-base text-white/70">We accept all major credit cards, PayPal, and wire
+                                    transfers for Enterprise plans.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div
+                            class="flex flex-col items-center gap-8 rounded-2xl border border-primary/50 bg-gradient-to-br from-primary/10 to-background-dark p-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Ready to Get
+                                Started?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">Start your 14-day free trial today. No credit
+                                card required.</p>
+                            <a class="flex w-full max-w-xs mx-auto cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-8 bg-primary text-lg font-bold text-white transition-opacity hover:bg-primary/90"
+                                href="signup.html">Start Free Trial</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[#33333D] py-12">
+            <div class="container mx-auto px-8">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-4">
+                                <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                        class="h-6" /></a>
+                            </div>
+                            <p class="text-sm text-white/70">Translate your handbooks instantly with AI-powered
+                                accuracy.</p>
+                            <p class="text-xs text-white/60">A LUNARTECH Company</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Product</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="about.html">About</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="pricing.html">Pricing</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="signup.html">Sign
+                                Up</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Resources</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="#">Documentation</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">API</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Support</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Company</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="blog.html">Blog</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="careers.html">Careers</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#33333D] pt-8 text-center">
+                        <p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A
+                            LUNARTECH Company.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            const button = this;
+            menu.classList.toggle('open');
+            const icon = button.querySelector('span');
+            if (menu.classList.contains('open')) {
+                icon.textContent = 'close';
+            } else {
+                icon.textContent = 'menu';
+            }
+        });
+    </script>
+</body>
+
+</html>

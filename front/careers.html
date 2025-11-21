@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Careers - Handbook Translator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8A2BE2",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#12121B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#EAEAEA]">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navigation -->
+        <header class="container mx-auto px-8 py-6">
+            <div class="flex items-center w-full">
+                <div class="flex items-center gap-4 flex-shrink-0">
+                    <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                            class="h-8" /></a>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8 ml-auto">
+                    <nav class="hidden items-center gap-8 md:flex">
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="about.html">About</a>
+                        <a class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                            href="pricing.html">Pricing</a>
+                        <a class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90"
+                            href="signup.html">Sign Up</a>
+                    </nav>
+                    <button id="mobile-menu-button"
+                        class="md:hidden flex h-10 w-10 items-center justify-center text-white hover:text-white/80 transition-colors">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                <nav class="flex flex-col gap-4 pb-4">
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="about.html">About</a>
+                    <a class="text-sm font-medium text-white/80 transition-colors hover:text-white py-2"
+                        href="pricing.html">Pricing</a>
+                    <a class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90"
+                        href="signup.html">Sign Up</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="container mx-auto px-8 py-16">
+                <div class="mx-auto max-w-4xl text-center">
+                    <h1 class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em] text-white mb-6">Join
+                        Our Team</h1>
+                    <p class="text-xl font-normal leading-relaxed text-white/70">Help us break down language barriers
+                        and build the future of global communication.</p>
+                </div>
+            </section>
+
+            <!-- Why Work With Us -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-6xl">
+                        <div class="flex flex-col items-center gap-4 mb-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Why Work at
+                                Handbook Translator?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">We're building something meaningful and we'd love
+                                for you to be part of it.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Innovation First</h3>
+                                <p class="text-base text-white/70">Work on cutting-edge AI and translation technology
+                                    that's shaping the future of global communication.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">groups</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Great Team</h3>
+                                <p class="text-base text-white/70">Join a diverse, talented team of engineers,
+                                    designers, and language experts from around the world.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">work</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Remote Friendly</h3>
+                                <p class="text-base text-white/70">Work from anywhere. We're a fully remote company with
+                                    flexible hours and a focus on work-life balance.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">trending_up</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Growth Opportunities</h3>
+                                <p class="text-base text-white/70">We invest in your professional development with
+                                    learning budgets, conferences, and mentorship programs.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">favorite</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Competitive Benefits</h3>
+                                <p class="text-base text-white/70">Comprehensive health insurance, equity packages,
+                                    unlimited PTO, and more.</p>
+                            </div>
+                            <div class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-8">
+                                <div
+                                    class="flex size-12 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined text-3xl">public</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Global Impact</h3>
+                                <p class="text-base text-white/70">Make a real difference by helping organizations
+                                    communicate across language barriers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Open Positions -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div class="flex flex-col items-center gap-4 mb-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Open Positions
+                            </h2>
+                            <p class="max-w-2xl text-lg text-white/70">Check out our current openings. Don't see a role
+                                that fits? We're always looking for great talent.</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <!-- Job Listing 1 -->
+                            <div
+                                class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-6 hover:border-primary/50 transition-colors">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex flex-col gap-2 flex-1">
+                                        <h3 class="text-xl font-bold text-white">Senior Full Stack Engineer</h3>
+                                        <div class="flex flex-wrap items-center gap-3 text-sm text-white/70">
+                                            <span class="flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-base">location_on</span>
+                                                <span>Remote</span>
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-base">work</span>
+                                                <span>Full-time</span>
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-base">schedule</span>
+                                                <span>Posted 2 days ago</span>
+                                            </span>
+                                        </div>
+                                        <p class="text-base text-white/70">We're looking for an experienced full stack
+                                            engineer to help build and scale our translation platform. You'll work on
+                                            everything from API design to frontend interfaces.</p>
+                                    </div>
+                                    <a class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90 whitespace-nowrap"
+                                        href="#apply">Apply</a>
+                                </div>
+
+                                <!-- Job Listing 2 -->
+                                <div
+                                    class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-6 hover:border-primary/50 transition-colors">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <div class="flex flex-col gap-2 flex-1">
+                                            <h3 class="text-xl font-bold text-white">AI/ML Engineer</h3>
+                                            <div class="flex flex-wrap items-center gap-3 text-sm text-white/70">
+                                                <span class="flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-base">location_on</span>
+                                                    <span>Remote</span>
+                                                </span>
+                                                <span class="flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-base">work</span>
+                                                    <span>Full-time</span>
+                                                </span>
+                                                <span class="flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-base">schedule</span>
+                                                    <span>Posted 5 days ago</span>
+                                                </span>
+                                            </div>
+                                            <p class="text-base text-white/70">Join our AI team to improve translation
+                                                quality and develop new features. Experience with NLP, transformer
+                                                models, and multilingual systems preferred.</p>
+                                        </div>
+                                        <a class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90 whitespace-nowrap"
+                                            href="#apply">Apply</a>
+                                    </div>
+
+                                    <!-- Job Listing 3 -->
+                                    <div
+                                        class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-6 hover:border-primary/50 transition-colors">
+                                        <div class="flex items-start justify-between gap-4">
+                                            <div class="flex flex-col gap-2 flex-1">
+                                                <h3 class="text-xl font-bold text-white">Product Designer</h3>
+                                                <div class="flex flex-wrap items-center gap-3 text-sm text-white/70">
+                                                    <span class="flex items-center gap-1">
+                                                        <span
+                                                            class="material-symbols-outlined text-base">location_on</span>
+                                                        <span>Remote</span>
+                                                    </span>
+                                                    <span class="flex items-center gap-1">
+                                                        <span class="material-symbols-outlined text-base">work</span>
+                                                        <span>Full-time</span>
+                                                    </span>
+                                                    <span class="flex items-center gap-1">
+                                                        <span
+                                                            class="material-symbols-outlined text-base">schedule</span>
+                                                        <span>Posted 1 week ago</span>
+                                                    </span>
+                                                </div>
+                                                <p class="text-base text-white/70">We're seeking a talented product
+                                                    designer to create beautiful, intuitive experiences for our
+                                                    translation platform. Strong portfolio in SaaS products required.
+                                                </p>
+                                            </div>
+                                            <a class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90 whitespace-nowrap"
+                                                href="#apply">Apply</a>
+                                        </div>
+
+                                        <!-- Job Listing 4 -->
+                                        <div
+                                            class="flex flex-col gap-4 rounded-xl border border-[#33333D] bg-white/5 p-6 hover:border-primary/50 transition-colors">
+                                            <div class="flex items-start justify-between gap-4">
+                                                <div class="flex flex-col gap-2 flex-1">
+                                                    <h3 class="text-xl font-bold text-white">Customer Success Manager
+                                                    </h3>
+                                                    <div
+                                                        class="flex flex-wrap items-center gap-3 text-sm text-white/70">
+                                                        <span class="flex items-center gap-1">
+                                                            <span
+                                                                class="material-symbols-outlined text-base">location_on</span>
+                                                            <span>Remote</span>
+                                                        </span>
+                                                        <span class="flex items-center gap-1">
+                                                            <span
+                                                                class="material-symbols-outlined text-base">work</span>
+                                                            <span>Full-time</span>
+                                                        </span>
+                                                        <span class="flex items-center gap-1">
+                                                            <span
+                                                                class="material-symbols-outlined text-base">schedule</span>
+                                                            <span>Posted 1 week ago</span>
+                                                        </span>
+                                                    </div>
+                                                    <p class="text-base text-white/70">Help our customers succeed with
+                                                        Handbook Translator. You'll work closely with enterprise clients
+                                                        to ensure they get maximum value from our platform.</p>
+                                                </div>
+                                                <a class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-primary text-sm font-bold text-white transition-opacity hover:bg-primary/90 whitespace-nowrap"
+                                                    href="#apply">Apply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            </section>
+
+            <!-- General Application -->
+            <section class="border-t border-[#33333D] py-16">
+                <div class="container mx-auto px-8">
+                    <div class="mx-auto max-w-4xl">
+                        <div
+                            class="flex flex-col items-center gap-8 rounded-2xl border border-primary/50 bg-gradient-to-br from-primary/10 to-background-dark p-12 text-center">
+                            <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Don't See Your
+                                Role?</h2>
+                            <p class="max-w-2xl text-lg text-white/70">We're always looking for talented people to join
+                                our team. Send us your resume and we'll keep you in mind for future opportunities.</p>
+                            <a class="flex w-full max-w-xs mx-auto cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-14 px-8 bg-primary text-lg font-bold text-white transition-opacity hover:bg-primary/90"
+                                href="#apply">Submit General Application</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[#33333D] py-12">
+            <div class="container mx-auto px-8">
+                <div class="mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-4">
+                                <a href="index.html"><img src="../public/handex-logo.png" alt="HANDEX LUNARTECH COMPANY"
+                                        class="h-6" /></a>
+                            </div>
+                            <p class="text-sm text-white/70">Translate your handbooks instantly with AI-powered
+                                accuracy.</p>
+                            <p class="text-xs text-white/60">A LUNARTECH Company</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Product</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="about.html">About</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="pricing.html">Pricing</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="signup.html">Sign
+                                Up</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Resources</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="#">Documentation</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">API</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Support</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h4 class="text-sm font-bold text-white">Company</h4>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="blog.html">Blog</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors"
+                                href="careers.html">Careers</a>
+                            <a class="text-sm text-white/70 hover:text-white transition-colors" href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#33333D] pt-8 text-center">
+                        <p class="text-sm text-white/60">© 2025 Translate Books Brilliantly. All rights reserved. A
+                            LUNARTECH Company.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            const button = this;
+            menu.classList.toggle('open');
+            const icon = button.querySelector('span');
+            if (menu.classList.contains('open')) {
+                icon.textContent = 'close';
+            } else {
+                icon.textContent = 'menu';
+            }
+        });
+    </script>
+</body>
+
+</html>
