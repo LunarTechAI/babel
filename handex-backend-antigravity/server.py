@@ -279,42 +279,30 @@ def run_translation_job(job_id: str, file_path: Path, target_language: str, open
         jobs[job_id]["error"] = str(e)
         jobs[job_id]["message"] = f"Translation failed: {str(e)}"
 
-# Mount dashboard static files
-# This handles ALL /static/* paths including /static/index.html
+# Mount dashboard static files at /dashboard to match frontend paths
 try:
     static_files = StaticFiles(directory=str(DASHBOARD_DIR), html=True)
-    app.mount("/static", static_files, name="static")
-    print(f"✓ Static files mounted at /static from {DASHBOARD_DIR}")
+    app.mount("/static", static_files, name="static") # Keep for backward compatibility
+    app.mount("/dashboard", static_files, name="dashboard") # New standard path
+    print(f"✓ Static files mounted at /dashboard and /static from {DASHBOARD_DIR}")
 except Exception as e:
     print(f"✗ Warning: Could not mount static files: {e}")
 
 @app.get("/")
 async def root():
-    """Serve dashboard index directly"""
-    dashboard_index = DASHBOARD_DIR / "index.html"
-    if dashboard_index.exists():
-        return FileResponse(
-            dashboard_index,
-            media_type="text/html",
-            headers={"Cache-Control": "no-cache"}
-        )
-    return {"message": "Handex Translation API is running"}
+    """Redirect to dashboard index"""
+    return RedirectResponse(url="/dashboard/index.html")
 
 # Fallback redirects for common incorrect paths
 @app.get("/front/index.html")
 async def redirect_front():
     """Redirect old front path to dashboard"""
-    return RedirectResponse(url="/static/index.html", status_code=301)
-
-@app.get("/dashboard")
-async def redirect_dashboard():
-    """Redirect /dashboard to static index"""
-    return RedirectResponse(url="/static/index.html", status_code=301)
+    return RedirectResponse(url="/dashboard/index.html", status_code=301)
 
 @app.get("/upload")
 async def redirect_upload():
     """Redirect /upload to upload page"""
-    return RedirectResponse(url="/static/upload-page/index.html", status_code=301)
+    return RedirectResponse(url="/dashboard/upload-page/index.html", status_code=301)
 
 @app.post("/api/translate")
 async def translate_document(

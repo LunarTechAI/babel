@@ -61,11 +61,11 @@
 
         <!-- Desktop Nav -->
         <nav class="hidden md:flex items-center gap-8">
-          <a href="/static/index.html"
+          <a href="/dashboard/index.html"
             class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Dashboard</a>
-          <a href="/static/my-translations/index.html"
+          <a href="/dashboard/my-translations/index.html"
             class="text-sm font-medium text-slate-400 hover:text-white transition-colors">My Translations</a>
-          <a href="/static/upload-page/index.html"
+          <a href="/dashboard/upload-page/index.html"
             class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Upload New</a>
         </nav>
 
@@ -74,7 +74,7 @@
           <button class="text-slate-400 hover:text-white transition-colors">
             <span class="material-symbols-outlined">notifications</span>
           </button>
-          <a href="/static/account/index.html"
+          <a href="/dashboard/account/index.html"
             class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 transition-colors">
             <span class="material-symbols-outlined text-lg">account_circle</span>
             <span class="hidden sm:inline">Account</span>
@@ -91,12 +91,13 @@
     <div id="mobile-menu"
       class="fixed inset-0 z-40 bg-[#0A0118]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6">
       <nav class="flex flex-col gap-4">
-        <a href="/static/index.html" class="text-lg font-medium text-white py-2 border-b border-white/10">Dashboard</a>
-        <a href="/static/my-translations/index.html"
+        <a href="/dashboard/index.html"
+          class="text-lg font-medium text-white py-2 border-b border-white/10">Dashboard</a>
+        <a href="/dashboard/my-translations/index.html"
           class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">My Translations</a>
-        <a href="/static/upload-page/index.html"
+        <a href="/dashboard/upload-page/index.html"
           class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Upload New</a>
-        <a href="/static/account/index.html"
+        <a href="/dashboard/account/index.html"
           class="text-lg font-medium text-slate-300 py-2 border-b border-white/10">Settings</a>
       </nav>
     </div>
@@ -166,7 +167,7 @@
 
         <!-- New Translation Button -->
         <div class="mt-12">
-          <button onclick="window.location.href='/static/upload-page/index.html'"
+          <button onclick="window.location.href='/dashboard/upload-page/index.html'"
             class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors hover:translate-y-[-2px] duration-300">
             <span class="material-symbols-outlined">add_circle</span>
             <span>Start a New Translation</span>
@@ -229,7 +230,7 @@
         const isLivePreview = window.location.port === '3004';
         const viewerPath = isLivePreview
           ? `/dashboard/viewer/index.html?file=${filename}`
-          : `/static/viewer/index.html?file=${filename}`;
+          : `/dashboard/viewer/index.html?file=${filename}`;
         window.open(viewerPath, '_blank');
       };
     }
