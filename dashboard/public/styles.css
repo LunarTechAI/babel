@@ -454,3 +454,148 @@
   border: 1px solid rgba(147, 51, 234, 0.3);
   box-shadow: 0 0 20px rgba(147, 51, 234, 0.2), inset 0 0 20px rgba(147, 51, 234, 0.1);
 }
+
+/* === POWERFUL GLOW BUTTON === */
+.btn-glow-purple {
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+  color: white;
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 30px rgba(168, 85, 247, 0.6),
+    0 0 60px rgba(168, 85, 247, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-glow-purple::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #c084fc, #9333ea);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.btn-glow-purple:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 50px rgba(168, 85, 247, 0.8),
+    0 0 100px rgba(168, 85, 247, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-glow-purple:hover::before {
+  opacity: 1;
+}
+
+.btn-glow-purple:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-glow-purple:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: #333;
+}
+
+/* Hide default select arrow */
+select.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* === DEDICATED TRANSLATE HANDBOOK BUTTON === */
+.btn-translate-handbook {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 2px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-translate-handbook:active {
+  transform: scale(0.98);
+}
+
+.btn-translate-handbook:hover {
+  transform: scale(1.05);
+}
+
+.btn-translate-handbook:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinning Gradient Beam */
+.btn-translate-handbook::before {
+  content: '';
+  position: absolute;
+  inset: -1000%;
+  background: conic-gradient(from 90deg at 50% 50%,
+      transparent 0%,
+      var(--primary-purple) 50%,
+      transparent 100%);
+  animation: spin-slow 4s linear infinite;
+}
+
+/* Ambient Glow Behind Beam */
+.btn-translate-handbook::after {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(from 90deg at 50% 50%,
+      transparent 0%,
+      var(--primary-purple) 50%,
+      transparent 100%);
+  filter: blur(48px);
+  opacity: 0.4;
+  animation: spin-slow 4s linear infinite;
+}
+
+/* Button Inner Face */
+.btn-translate-handbook-inner {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-translate-handbook-inner:hover {
+  background: #1c2230;
+}
+
+/* Inner Highlight */
+.btn-translate-handbook-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

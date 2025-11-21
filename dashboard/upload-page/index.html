@@ -119,12 +119,13 @@
 
           <!-- Steps -->
           <div class="flex items-center gap-4 text-sm">
-            <div class="flex items-center gap-2 text-white">
+            <!-- Step 1: Upload (Active) -->
+            <div class="flex items-center gap-3">
               <div
-                class="flex size-8 items-center justify-center rounded-full bg-primary-purple text-white shadow-[0_0_15px_rgba(168,85,247,0.5)]">
-                <span class="font-bold">1</span>
+                class="w-10 h-10 rounded-full bg-primary-purple flex items-center justify-center text-white font-bold shadow-[0_0_30px_rgba(168,85,247,0.8)] ring-2 ring-[#a855f7]">
+                1
               </div>
-              <span class="font-medium">Upload</span>
+              <span class="text-white font-medium text-glow-purple">Upload</span>
             </div>
             <div class="h-px flex-1 bg-white/10"></div>
             <div class="flex items-center gap-2 text-slate-500">
@@ -169,7 +170,8 @@
             <div class="space-y-2">
               <label for="target-language" class="text-sm font-medium text-slate-300">Translate To:</label>
               <div class="relative">
-                <select id="target-language" class="glass-input w-full appearance-none cursor-pointer">
+                <select id="target-language"
+                  class="glass-input w-full appearance-none cursor-pointer bg-[#0A0118] text-white">
                   <option value="">Select Target Language</option>
                   <option value="es">Spanish (Español)</option>
                   <option value="zh">Chinese (中文)</option>
@@ -201,11 +203,13 @@
             </div>
 
             <!-- Action Button -->
-            <button id="translate-btn"
-              class="w-full h-14 rounded-xl bg-primary-purple hover:bg-primary-purple-bright text-white font-bold text-lg shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all hover-lift flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              disabled>
-              <span>Translate Handbook</span>
-              <span class="material-symbols-outlined">arrow_forward</span>
+            <!-- Action Button -->
+            <button id="translate-btn" class="btn-translate-handbook group">
+              <span class="btn-translate-handbook-inner">
+                <span>Translate Handbook</span>
+                <span
+                  class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </span>
             </button>
           </div>
         </div>
