@@ -4,6 +4,20 @@
   <img src="assets/logo.png" alt="LunarTech Logo" width="200"/>
   <br>
   <h1>Translate Books Brilliantly</h1>
+  <br>
+  <div align="center">
+    <img src="assets/logo.png" alt="LunarTech" height="30"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" height="30"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height="30"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="font-size: 20px; font-weight: bold; font-family: sans-serif; vertical-align: top;">Antigravity</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" height="30"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg" alt="Github" height="30"/>
+  </div>
 </div>
 
 <div align="center">
