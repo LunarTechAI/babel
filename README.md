@@ -1,3 +1,28 @@
+# Babel
+
+<div align="center">
+  <img src="assets/logo.png" alt="LunarTech Logo" width="200"/>
+  <br>
+  <h1>Translate Books Brilliantly</h1>
+  <br>
+  
+</div>
+
+<div align="center">
+  <img src="assets/hero_image.png" alt="Babel Dashboard" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+</div>
+
+---
+
+## 🌍 Augmenting Human Intelligence
+
+In an era where information is abundant but often siloed by language, **Babel** stands as a bridge. We believe that knowledge should be universally accessible, regardless of the language it was originally written in.
+
+Babel is not just a translation tool; it is a **human augmentation system**. By leveraging state-of-the-art Generative AI, we empower individuals to tap into vast knowledge reservoirs that were previously out of reach. Whether it's technical documentation, literary masterpieces, or academic research, Babel ensures that language is no longer a barrier to understanding.
+
+## 🚀 Mission
+
+Our mission is to democratize access to global knowledge. We are building a future where:
 - **Language is fluid**: Ideas flow freely across linguistic borders.
 - **Knowledge is universal**: Every human has the right and ability to learn from the collective wisdom of the world.
 - **Potential is unleashed**: By removing language constraints, we unlock the full creative and intellectual potential of humanity.
