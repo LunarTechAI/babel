@@ -43,6 +43,29 @@ OUTPUTS_DIR.mkdir(exist_ok=True)
 # Job tracking
 jobs: Dict[str, dict] = {}
 
+def load_env_file():
+    """Load environment variables from .env file"""
+    env_path = BASE_DIR / ".env"
+    if env_path.exists():
+        print(f"Loading environment variables from {env_path}")
+        with open(env_path, "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    # Remove quotes if present
+                    value = value.strip().strip("'").strip('"')
+                    os.environ[key.strip()] = value
+                    if key.strip() == "OPENAI_API_KEY":
+                        print(f"Loaded OPENAI_API_KEY from .env (ends with ...{value[-4:]})")
+    else:
+        print(f"Warning: .env file not found at {env_path}")
+
+# Load env vars on startup
+load_env_file()
+
 def run_translation_job(job_id: str, file_path: Path, target_language: str, openai_api_key: str):
     """Run translation in background thread"""
     try:
@@ -63,17 +86,16 @@ def run_translation_job(job_id: str, file_path: Path, target_language: str, open
             progress_points = [
                 (5, "Starting translation..."),           # 0-2s: Initial
                 (10, "Parsing PDF document..."),          # 2-4s: Quick start
-                (25, "Extracting content..."),            # 4-8s: Building confidence
-                (35, "Extracting terminology..."),        # 8-12s
-                (45, "Translating content..."),           # 12-16s
-                (55, "Translating paragraphs..."),        # 16-20s
-                (65, "Processing translation..."),        # 20-28s
-                (75, "Formatting document..."),           # 28-40s
-                (82, "Applying styles..."),               # 40-60s
-                (88, "Generating PDF..."),                # 60-80s
-                (92, "Optimizing output..."),             # 80-100s
-                (97, "Finalizing..."),                    # 100-120s
-                (99, "Almost complete...")                # 120+ seconds
+                (20, "Extracting content..."),            # 4-8s: Building confidence
+                (30, "Extracting terminology..."),        # 8-12s
+                (40, "Translating content..."),           # 12-16s
+                (50, "Translating paragraphs..."),        # 16-20s
+                (60, "Processing translation..."),        # 20-28s
+                (70, "Formatting document..."),           # 28-40s
+                (80, "Applying styles..."),               # 40-60s
+                (85, "Generating PDF..."),                # 60-80s
+                (90, "Optimizing output..."),             # 80-100s
+                (95, "Finalizing..."),                    # 100-120s
             ]
             
             start_time = time.time()
@@ -86,13 +108,13 @@ def run_translation_job(job_id: str, file_path: Path, target_language: str, open
                 # Calculate time elapsed to adjust pacing
                 elapsed = time.time() - start_time
                 
-                # Faster updates at the beginning, slower as we approach completion
+                # Slower updates to avoid getting stuck at high percentages too early
                 if target_progress <= 35:
-                    sleep_time = 2  # Fast initial updates (every 2 seconds)
+                    sleep_time = 3  # Initial updates
                 elif target_progress <= 75:
-                    sleep_time = 4  # Medium speed (every 4 seconds)
+                    sleep_time = 6  # Medium speed
                 else:
-                    sleep_time = 6  # Slower near completion (every 6 seconds)
+                    sleep_time = 10 # Much slower near completion
                 
                 time.sleep(sleep_time)
                 
@@ -148,8 +170,8 @@ def run_translation_job(job_id: str, file_path: Path, target_language: str, open
             "Generate drawing instructions": (88, "Generating graphics..."),
             "Subset font": (92, "Optimizing fonts..."),
             "Save PDF": (95, "Saving PDF..."),
-            "finish translate": (98, "Finalizing translation..."),
-            "Translation results": (99, "Translation complete!")
+            "finish translate": (97, "Finalizing translation..."),
+            "Translation results": (98, "Translation complete!")
         }
         
         # Monitor output and detect BabelDOC stages
