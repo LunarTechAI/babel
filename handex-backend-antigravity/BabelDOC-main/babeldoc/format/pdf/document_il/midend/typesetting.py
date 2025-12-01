@@ -1198,14 +1198,69 @@ class Typesetting:
     def add_watermark(self, page: il_version_1.Page):
         page_width = page.cropbox.box.x2 - page.cropbox.box.x
         page_height = page.cropbox.box.y2 - page.cropbox.box.y
-        style = il_version_1.PdfStyle(
+        # Define text parts
+        prefix = "This document is translated by lunartech.ai's open-source PDF translation library Babel ("
+        link1 = "https://lunartech.ai"
+        middle = "). This repository is currently under active construction, welcome to star and follow. Link to github "
+        link2 = "https://github.com/LunarTechAI/babel"
+        
+        full_text = prefix + link1 + middle + link2
+        
+        if self.translation_config.debug:
+            full_text += "\n 当前为 DEBUG 模式，将显示更多辅助信息。请注意，部分框的位置对应原文，但在译文中可能不正确。"
+
+        # Try to find a bold font
+        bold_font_id = "base"
+        # Attempt to find a bold version of the base font or a fallback bold font
+        # We know from assets.py that "SourceHanSansCN-Bold.ttf" is available and is likely the bold version of base (SourceHanSansCN-Regular.ttf)
+        # However, to be safe and generic, we can try to ask font_mapper
+        
+        # Simple heuristic: try to find a font with "Bold" in its ID from the loaded fonts
+        for fid in self.font_mapper.fontid2font:
+            if "Bold" in fid and "SourceHanSans" in fid:
+                bold_font_id = fid
+                break
+        
+        if bold_font_id == "base":
+             # Fallback to any bold font if specific one not found, or keep base
+             for fid in self.font_mapper.fontid2font:
+                if "Bold" in fid:
+                    bold_font_id = fid
+                    break
+
+        style_normal = il_version_1.PdfStyle(
             font_id="base",
             font_size=6,
             graphic_state=il_version_1.GraphicState(),
         )
-        text = f"本文档由 funstory.ai 的开源 PDF 翻译库 BabelDOC {WATERMARK_VERSION} (http://yadt.io) 翻译，本仓库正在积极的建设当中，欢迎 star 和关注。"
+        
+        style_bold = il_version_1.PdfStyle(
+            font_id=bold_font_id,
+            font_size=6,
+            graphic_state=il_version_1.GraphicState(),
+        )
+
+        composition = []
+        
+        # Helper to add text
+        def add_text(text, style):
+            composition.append(
+                il_version_1.PdfParagraphComposition(
+                    pdf_same_style_unicode_characters=il_version_1.PdfSameStyleUnicodeCharacters(
+                        unicode=text,
+                        pdf_style=style,
+                    ),
+                )
+            )
+
+        add_text(prefix, style_normal)
+        add_text(link1, style_bold)
+        add_text(middle, style_normal)
+        add_text(link2, style_bold)
+        
         if self.translation_config.debug:
-            text += "\n 当前为 DEBUG 模式，将显示更多辅助信息。请注意，部分框的位置对应原文，但在译文中可能不正确。"
+             add_text("\n 当前为 DEBUG 模式，将显示更多辅助信息。请注意，部分框的位置对应原文，但在译文中可能不正确。", style_normal)
+
         page.pdf_paragraph.append(
             il_version_1.PdfParagraph(
                 first_line_indent=False,
@@ -1216,18 +1271,14 @@ class Typesetting:
                     y2=page.cropbox.box.y2 - page_height * 0.05,
                 ),
                 vertical=False,
-                pdf_style=style,
-                pdf_paragraph_composition=[
-                    il_version_1.PdfParagraphComposition(
-                        pdf_same_style_unicode_characters=il_version_1.PdfSameStyleUnicodeCharacters(
-                            unicode=text,
-                            pdf_style=style,
-                        ),
-                    ),
-                ],
+                pdf_style=style_normal, # Default style for paragraph
+                pdf_paragraph_composition=composition,
+                unicode=full_text,
                 xobj_id=-1,
-            ),
+            )
         )
+
+
 
     def render_paragraph(
         self,

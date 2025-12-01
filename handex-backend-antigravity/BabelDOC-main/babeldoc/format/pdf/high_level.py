@@ -177,9 +177,145 @@ def fix_cmap(translate_result: TranslateResult, translate_config: TranslationCon
 
         temp_path = translate_config.get_working_file_path(f"{path.stem}.cmap.pdf")
         pdf = pymupdf.open(path)
-        reproduce_cmap(pdf)
         safe_save(pdf, temp_path)
         shutil.move(temp_path, path)
+
+
+def add_watermark(
+    translate_result: TranslateResult, translate_config: TranslationConfig
+):
+    """Add logo watermark to the output PDFs."""
+    processed = []
+    
+    # Define assets path - assuming relative to the project root or a known location
+    # Based on user input: /Users/vaheaslanyan/Documents/Apps/babel/assets
+    assets_dir = Path("/Users/vaheaslanyan/Documents/Apps/babel/assets")
+    black_logo_path = assets_dir / "Horizontal Black_1@4x.png"
+    white_logo_path = assets_dir / "Horizontal White_1@4x.png"
+    
+    if not black_logo_path.exists() or not white_logo_path.exists():
+        logger.warning(f"Watermark assets not found at {assets_dir}, skipping watermark.")
+        return
+
+    for attr in (
+        "mono_pdf_path",
+        "dual_pdf_path",
+        # "no_watermark_mono_pdf_path", # Skip no_watermark versions
+        # "no_watermark_dual_pdf_path",
+    ):
+        path = getattr(translate_result, attr)
+        if not path or path in processed:
+            continue
+        processed.append(path)
+
+        try:
+            temp_path = translate_config.get_working_file_path(f"{path.stem}.watermark.pdf")
+            pdf = pymupdf.open(path)
+            
+            for page in pdf:
+                # Determine background color at bottom right
+                # Check a small region at bottom right
+                page_rect = page.rect
+                # Define watermark area (e.g., 150x50 at bottom right with some margin)
+                margin_x = 20
+                margin_y = 20
+                wm_width = 100 # Adjust size as needed "not huge"
+                wm_height = 30 # Aspect ratio approx 3:1 based on filename "Horizontal"
+                
+                # Position: Bottom Right
+                rect = pymupdf.Rect(
+                    page_rect.width - wm_width - margin_x,
+                    page_rect.height - wm_height - margin_y,
+                    page_rect.width - margin_x,
+                    page_rect.height - margin_y
+                )
+                
+                # Sample background color to decide logo color
+                # We'll sample the center of where the watermark will be
+                sample_point = pymupdf.Point(rect.x0 + rect.width/2, rect.y0 + rect.height/2)
+                
+                # Get pixmap of a small area around sample point to estimate brightness
+                # Note: This is a heuristic. 
+                # If page is scanned/image-based, this works on the image.
+                # If page is vector, this renders it.
+                pix = page.get_pixmap(clip=pymupdf.Rect(sample_point.x - 5, sample_point.y - 5, sample_point.x + 5, sample_point.y + 5))
+                
+                # Calculate average luminance
+                # Pixmap samples are bytes. 
+                if pix.n >= 3:
+                    # RGB or RGBA
+                    pixels = list(pix.samples)
+                    r_sum = 0
+                    g_sum = 0
+                    b_sum = 0
+                    count = 0
+                    step = pix.n
+                    for i in range(0, len(pixels), step):
+                        r_sum += pixels[i]
+                        g_sum += pixels[i+1]
+                        b_sum += pixels[i+2]
+                        count += 1
+                    
+                    if count > 0:
+                        avg_r = r_sum / count
+                        avg_g = g_sum / count
+                        avg_b = b_sum / count
+                        # Luminance formula
+                        luminance = 0.299 * avg_r + 0.587 * avg_g + 0.114 * avg_b
+                    else:
+                        luminance = 255 # Default to white background
+                else:
+                    # Grayscale or other
+                    luminance = 255 # Assume light background
+                
+                # Threshold for dark background (0-255)
+                # If luminance is low (dark), use white logo. Else use black.
+                if luminance < 128:
+                    logo_path = str(white_logo_path)
+                else:
+                    logo_path = str(black_logo_path)
+                
+                # Insert Image
+                page.insert_image(rect, filename=logo_path)
+                
+                # Add Hyperlink
+                page.insert_link({
+                    "kind": pymupdf.LINK_URI,
+                    "from": rect,
+                    "uri": "https://lunartech.ai"
+                })
+
+                # --- Text Watermark Hyperlinks ---
+                # Search for the URLs in the text watermark and add links
+                # URL 1: https://lunartech.ai (appearing in the text)
+                # URL 2: https://github.com/LunarTechAI/babel
+                
+                text_links = {
+                    "https://lunartech.ai": "https://lunartech.ai",
+                    "https://github.com/LunarTechAI/babel": "https://github.com/LunarTechAI/babel"
+                }
+                
+                for text_to_find, uri in text_links.items():
+                    # search_for returns a list of Rect objects
+                    text_rects = page.search_for(text_to_find)
+                    for text_rect in text_rects:
+                        page.insert_link({
+                            "kind": pymupdf.LINK_URI,
+                            "from": text_rect,
+                            "uri": uri
+                        })
+                        # Draw underline
+                        # Draw a line from bottom-left to bottom-right of the rect
+                        p1 = pymupdf.Point(text_rect.x0, text_rect.y1)
+                        p2 = pymupdf.Point(text_rect.x1, text_rect.y1)
+                        page.draw_line(p1, p2, color=(0, 0, 0), width=0.5)
+
+            safe_save(pdf, temp_path)
+            shutil.move(temp_path, path)
+            
+        except Exception as e:
+            logger.error(f"Failed to add watermark to {path}: {e}")
+
 
 
 def verify_file_hash(file_path: str, expected_hash: str) -> bool:
@@ -777,6 +913,7 @@ def do_translate(
 
         fix_cmap(result, translation_config)
         add_metadata(result, translation_config)
+        add_watermark(result, translation_config)
         try:
             migrate_toc(translation_config, result)
         except Exception as e:
